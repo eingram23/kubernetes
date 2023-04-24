@@ -1,8 +1,8 @@
 apiVersion: run.tanzu.vmware.com/v1alpha2
 kind: TanzuKubernetesCluster
 metadata:
-  name: tkgs-v2-cluster-xsmall
-  namespace: test
+  name: tkg-cluster1
+  namespace: homelab
 spec:
   topology:
     controlPlane:
@@ -11,7 +11,7 @@ spec:
       storageClass: vsan-default-storage-policy
       tkr:  
         reference:
-          name: v1.21.2---vmware.1-tkg.1.ee25d55
+          name: v1.23.8---vmware.3-tkg.1
     nodePools:
     - name: worker-nodepool-a1
       replicas: 1
@@ -19,4 +19,8 @@ spec:
       storageClass: vsan-default-storage-policy
       tkr:  
         reference:
-          name: v1.21.2---vmware.1-tkg.1.ee25d55
+          name: v1.23.8---vmware.3-tkg.1
+  settings:
+    network:
+      pods:
+        cidrBlocks: ["192.0.5.0/16"]
