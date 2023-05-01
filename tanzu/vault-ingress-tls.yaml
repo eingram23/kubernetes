@@ -1,0 +1,14 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: ingress-vault
+  namespace: vault
+spec:
+  virtualhost:
+    fqdn: 10.80.0.69
+    tls:
+      passthrough: true
+  tcpproxy:
+    services:
+    - name: vault-ui
+      port: 8200
