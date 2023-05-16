@@ -4,7 +4,7 @@ namespace: tanzu-system-ingress
 contour:
  configFileContents: {}
  useProxyProtocol: false
- replicas: 2
+ replicas: 1
  pspNames: "vmware-system-restricted"
  logLevel: info
 envoy:
