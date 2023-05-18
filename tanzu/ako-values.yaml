@@ -1,0 +1,18 @@
+AKOSettings:
+  clusterName: tkgs-test-cluster1
+NetworkSettings:
+  nodeNetworkList:
+    - networkName: "DPG-Workload"
+      cidrs: 
+        - 10.70.0.0/24 
+  vipNetworkList: 
+    - networkName: "DPG-Frontend"
+      cidr: 10.80.0.0/24
+L7Settings:
+  defaultIngController: 'true'
+  serviceType: ClusterIP 
+ControllerSettings:
+  serviceEngineGroupName: Default-Group
+  controllerVersion: '22.1.3' 
+  cloudName: Default-Cloud
+  controllerHost: 'avicont1.local.lan'
