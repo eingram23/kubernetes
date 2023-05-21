@@ -1,5 +1,6 @@
 AKOSettings:
   clusterName: tkgs-test-cluster1
+  layer7Only: 'false'
 NetworkSettings:
   nodeNetworkList:
     - networkName: "DPG-Workload"
