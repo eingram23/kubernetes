@@ -10,7 +10,7 @@ spec:
     - {{ . }}
     {{- end }}
   routes:
-    - match: Host(`{{ .Values.ingressRoute.routes[0].match }}`)
+    - match: Host(`{{ .Values.ingressRoute.host }}`)
       kind: Rule
       services:
         - name: {{ .Values.ingressRoute.routes[0].services[0].name }}
