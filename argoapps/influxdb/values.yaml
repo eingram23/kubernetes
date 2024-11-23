@@ -152,9 +152,9 @@ ingressRoute:
   path: /
   entryPoints:
     - web
-  services:
-    - name: influxdb
-      port: 80
+  service:
+    name: influxdb
+    port: 80
 
 ## Add custom volume and volumeMounts
 # volumes:

@@ -13,5 +13,5 @@ spec:
     - match: Host(`{{ .Values.ingressRoute.host }}`)
       kind: Rule
       services:
-        - name: {{ .Values.ingressRoute.services[0].name }}
-          port: {{ .Values.ingressRoute.services[0].port }}
+        - name: {{ .Values.ingressRoute.service.name }}
+          port: {{ .Values.ingressRoute.service.port }}
