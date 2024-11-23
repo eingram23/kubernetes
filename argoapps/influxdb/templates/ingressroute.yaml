@@ -1,0 +1,18 @@
+{{- if .Values.ingressroute.enabled }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-ingressroute
+  namespace: {{ .Release.Namespace }}
+spec:
+  entryPoints:
+    {{- range .Values.ingressRoute.entryPoints }}
+    - {{ . }}
+    {{- end }}
+  routes:
+    - match: {{ .Values.ingressRoute.routes[0].match }}
+      kind: {{ .Values.ingressRoute.routes[0].kind }}
+      services:
+        - name: {{ .Values.ingressRoute.routes[0].services[0].name }}
+          port: {{ .Values.ingressRoute.routes[0].services[0].port }}
+
