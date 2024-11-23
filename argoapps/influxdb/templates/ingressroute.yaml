@@ -2,7 +2,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-ingressroute
+  name: {{ .Release.Name }}
   namespace: {{ .Release.Namespace }}
 spec:
   entryPoints:
@@ -10,9 +10,8 @@ spec:
     - {{ . }}
     {{- end }}
   routes:
-    - match: {{ .Values.ingressRoute.routes[0].match }}
-      kind: {{ .Values.ingressRoute.routes[0].kind }}
+    - match: Host(`{{ .Values.ingressRoute.routes[0].match }}`)
+      kind: Rule
       services:
         - name: {{ .Values.ingressRoute.routes[0].services[0].name }}
           port: {{ .Values.ingressRoute.routes[0].services[0].port }}
-

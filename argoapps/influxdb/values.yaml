@@ -148,14 +148,13 @@ ingress:
 
 ingressRoute:
   enabled: true
+  host: influxdb.local.lan
+  path: /
   entryPoints:
     - web
-  routes:
-    - match: Host(`influxdb-dev.local.lan`)
-      kind: Rule
-      services:
-        - name: influxdb
-          port: 80
+  services:
+    - name: influxdb
+      port: 80
 
 ## Add custom volume and volumeMounts
 # volumes:
