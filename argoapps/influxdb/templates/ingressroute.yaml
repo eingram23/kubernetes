@@ -15,3 +15,4 @@ spec:
       services:
         - name: {{ .Values.ingressRoute.service.name }}
           port: {{ .Values.ingressRoute.service.port }}
+{{- end }}
