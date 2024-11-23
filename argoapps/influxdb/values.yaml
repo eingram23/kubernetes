@@ -154,7 +154,7 @@ ingressRoute:
     - web
   service:
     name: influxdb
-    port: 80
+    port: 8086
 
 ## Add custom volume and volumeMounts
 # volumes:
