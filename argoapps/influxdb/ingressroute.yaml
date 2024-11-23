@@ -1,0 +1,15 @@
+---
+kind: IngressRoute
+apiVersion: traefik.containo.us/v1alpha1
+metadata:
+  name: influxdb
+  namespace: influxdb
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`influxdb-dev.local.lan`)
+      kind: Rule
+      services:
+        - name: ainfluxdb-influxdb2
+          port: 80
