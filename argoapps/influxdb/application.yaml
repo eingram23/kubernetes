@@ -1,0 +1,11 @@
+project: default
+source:
+  repoURL: https://github.com/influxdata/helm-charts.git
+  path: charts/influxdb2
+  targetRevision: HEAD
+destination:
+  server: https://kubernetes.default.svc
+  namespace: influxdb
+syncPolicy:
+  syncOptions:
+    - CreateNamespace=true
