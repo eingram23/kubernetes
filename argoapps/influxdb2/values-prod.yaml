@@ -193,7 +193,7 @@ ingressRoute:
   entryPoints:
     - web
   service:
-    name: influxdb
+    name: influxdb2
     port: 8086
 
 ## Pod disruption budget configuration
