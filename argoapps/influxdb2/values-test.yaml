@@ -186,8 +186,8 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   path: /
 
-# ingressRoute:
-#   enabled: true
+ingressRoute:
+  enabled: false
 #   host: influxdb-test.local.lan
 #   path: /
 #   entryPoints:
