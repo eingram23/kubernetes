@@ -186,16 +186,6 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   path: /
 
-ingressRoute:
-  enabled: false
-#   host: influxdb-test.local.lan
-#   path: /
-#   entryPoints:
-#     - web
-#   service:
-#     name: influxdb2
-#     port: 80
-
 ## Pod disruption budget configuration
 ##
 pdb:
