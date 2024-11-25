@@ -10,13 +10,13 @@ spec:
   project: default
   sources:
     - repoURL: https://github.com/influxdata/helm-charts.git
-      targetRevision: HEAD
+      targetRevision: influxdb2-2.1.2
       chart: influxdb2
       helm:
         valueFiles:
           - $values/argoapps/influxdb2/values-test.yaml
     - repoURL: https://github.com/eingram23/kubernetes.git
-      targetRevision: HEAD
+      targetRevision: main
       ref: values
   syncPolicy:
     syncOptions:
