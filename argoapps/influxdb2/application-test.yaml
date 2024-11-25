@@ -10,7 +10,7 @@ spec:
   project: default
   sources:
     - repoURL: https://github.com/influxdata/helm-charts.git
-      targetRevision: influxdb2-2.1.2
+      targetRevision: 2.1.2
       chart: influxdb2
       helm:
         valueFiles:
