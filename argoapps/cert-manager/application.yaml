@@ -17,7 +17,7 @@ spec:
           installCRDs: true
     - repoURL: https://github.com/eingram23/kubernetes.git
       targetRevision: main
-      path: /argoapps/cert-manager/manifests
+      path: argoapps/cert-manager/manifests
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
