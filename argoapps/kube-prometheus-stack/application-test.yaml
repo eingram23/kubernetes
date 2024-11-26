@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: influxdb2
+  name: kube-prometheus-stack
   namespace: argocd
 spec:
   destination:
-    namespace: influxdb2
+    namespace: monitoring
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - repoURL: https://helm.influxdata.com/
-      targetRevision: 2.1.2
-      chart: influxdb2
+    - repoURL: https://prometheus-community.github.io/helm-charts
+      targetRevision: 66.2.2
+      chart: kube-prometheus-stack
       helm:
         valueFiles:
-          - $values/argoapps/influxdb2/values-prod.yaml
+          - $values/argoapps/kube-prometheus-stack/values-test.yaml
     - repoURL: https://github.com/eingram23/kubernetes.git
       targetRevision: main
       ref: values
