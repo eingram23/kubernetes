@@ -1,0 +1,24 @@
+global:
+  domain: argocd.local.lan
+
+configs:
+  params:
+    server.insecure: true
+
+redis-ha:
+  enabled: true
+
+controller:
+  replicas: 1
+
+server:
+  ingress:
+    enabled: false
+
+repoServer:
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+
+applicationSet:
+  replicas: 2
