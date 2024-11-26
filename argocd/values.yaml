@@ -7,4 +7,4 @@ configs:
 
 server:
   ingress:
-    enabled: false
+    enabled: true
