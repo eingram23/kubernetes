@@ -23,4 +23,4 @@ spec:
     #   path: argoapps/argocd/manifests
   syncPolicy:
     syncOptions:
-      - CreateNamespace=false
+      - CreateNamespace=true
