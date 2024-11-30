@@ -1,0 +1,67 @@
+---
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: awx
+spec:
+  admin_user: admin
+  admin_email: edward.ingram23@gmail.com
+  admin_password_secret: awx-admin-password
+  service_type: ClusterIP
+  # default nodeport_port is 30080
+  # nodeport_port: <nodeport_port>
+  secret_key_secret: awx-secret-key
+  postgres_resource_requirements:
+    requests:
+      cpu: 250m
+      memory: 250M
+    # limits:
+    #   cpu: 1000m
+    #   memory: 500Mi
+  postgres_storage_requirements:
+    requests:
+      storage: 8Gi
+    limits:
+      storage: 50Gi
+  postgres_storage_class: {{ storageclass }}
+  postgres_extra_args:
+    - '-c'
+    - 'max_connections=1000'
+  image: quay.io/ansible/awx
+  image_version: {{ awx_ver }}
+  image_pull_policy: Always
+  ee_images:
+    - name: awx-ee
+      image: quay.io/ansible/awx-ee:latest
+    # - name: homelab-awx-ee-v1
+    #   image: gitea{{ suffix }}.ycdisp.net/eingram/homelab-awx-ee-v1
+  ee_extra_env: |
+    - name: RECEPTOR_KUBE_SUPPORT_RECONNECT
+      value: disabled
+  web_resource_requirements:
+    requests:
+      cpu: 250m
+      memory: 250M
+    # limits:
+    #   cpu: 500m
+    #   memory: 500Mi
+  task_resource_requirements:
+    requests:
+      cpu: 250m
+      memory: 250M
+    # limits:
+    #   cpu: 500m
+    #   memory: 500Mi
+  ee_resource_requirements:
+    requests:
+      cpu: 250m
+      memory: 100Mi
+    # limits:
+    #   cpu: 500m
+    #   memory: 250Mi
+  redis_capabilities:
+    - CHOWN
+    - SETUID
+    - SETGID
+  task_privileged: true
+  bundle_cacert_secret: homelab-bundleca-tls

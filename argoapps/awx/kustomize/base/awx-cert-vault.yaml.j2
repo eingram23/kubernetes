@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: awx-tls
+  namespace: awx
+spec:
+  secretName: awx-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: vault-cluster-issuer
+  commonName: awx{{ suffix }}.local.lan
+  dnsNames:
+  - awx{{ suffix }}.local.lan
+  duration: 8760h
+  renewBefore: 4380h

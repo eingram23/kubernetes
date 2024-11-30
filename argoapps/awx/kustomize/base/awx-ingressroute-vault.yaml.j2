@@ -1,0 +1,18 @@
+---
+kind: IngressRoute
+apiVersion: traefik.containo.us/v1alpha1
+metadata:
+  name: awx
+  namespace: awx
+spec:
+  entryPoints: 
+    - web
+    - websecure
+  routes:
+  - match: Host(`awx{{ suffix }}.local.lan`) 
+    kind: Rule
+    services:
+    - name: awx-service
+      port: 80
+  tls:
+    secretName: awx-tls
