@@ -2,25 +2,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: argocd
-  namespace: argocd
 spec:
-  destination:
-    namespace: argocd
-    server: https://kubernetes.default.svc
   project: default
-  sources:
-    - repoURL: https://argoproj.github.io/argo-helm
-      targetRevision: 3.35.4
-      chart: argo-cd
-      helm:
-        valueFiles:
-          - $values/argoapps/argocd/values.yaml
+  source:
     - repoURL: https://github.com/eingram23/kubernetes.git
       targetRevision: main
-      ref: values
-    - repoURL: https://github.com/eingram23/kubernetes.git
-      targetRevision: main
-      path: argoapps/argocd/manifests
+      path: argoapps/argocd/kustomize
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
