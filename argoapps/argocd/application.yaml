@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-  - repoURL: https://github.com/eingram23/kubernetes.git
+    repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     path: argoapps/argocd/kustomize
   destination:
