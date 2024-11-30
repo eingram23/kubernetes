@@ -18,9 +18,9 @@ spec:
     - repoURL: https://github.com/eingram23/kubernetes.git
       targetRevision: main
       ref: values
-    # - repoURL: https://github.com/eingram23/kubernetes.git
-    #   targetRevision: main
-    #   path: argoapps/argocd/manifests
+    - repoURL: https://github.com/eingram23/kubernetes.git
+      targetRevision: main
+      path: argoapps/argocd/manifests
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
