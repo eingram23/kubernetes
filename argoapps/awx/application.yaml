@@ -1,16 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd
+  name: awx
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argoapps/argocd/kustomize
+    path: argoapps/awx/kustomize
+    plugin:
+      name: argocd-vault-plugin
   destination:
-    namespace: argocd
+    namespace: awx
     server: 'https://kubernetes.default.svc'
   syncPolicy:
     syncOptions:
