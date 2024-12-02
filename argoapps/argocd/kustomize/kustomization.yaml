@@ -8,7 +8,7 @@ resources:
 - base/cert.yaml
 - base/argocd-repo-server-rbac.yaml
 - base/cmp-plugin.yaml
-- base/argocd-vault-plugin-credentials.yaml
+# - base/argocd-vault-plugin-credentials.yaml
 - https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.1/manifests/install.yaml
 
 configMapGenerator:
