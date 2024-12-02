@@ -3,11 +3,11 @@ kind: Kustomization
 
 namespace: argocd
 resources:
-  - base/ingressroute.yaml
-  - base/cert.yaml
-  - base/argocd-vault-plugin-credentials.yaml
-  - https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.1/manifests/install.yaml
+- base/ingressroute.yaml
+- base/cert.yaml
+- base/argocd-vault-plugin-credentials.yaml
+- https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.1/manifests/install.yaml
 
 patchesStrategicMerge:
-  - overlays/argocd-repo-server-deploy.yaml
-  - overlays/argocd-cm.yaml
+- overlays/argocd-repo-server-deploy.yaml
+- overlays/argocd-cm.yaml
