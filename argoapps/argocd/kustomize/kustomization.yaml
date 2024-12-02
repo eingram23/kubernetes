@@ -5,9 +5,10 @@ namespace: argocd
 resources:
 - base/ingressroute.yaml
 - base/cert.yaml
-- base/argocd-vault-plugin-credentials.yaml
+- cmp-plugin.yaml
+- argocd-vault-plugin-credentials.yaml
 - https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.1/manifests/install.yaml
 
-patchesStrategicMerge:
-- overlays/argocd-repo-server-deploy.yaml
-- overlays/argocd-cm.yaml
+patches:
+- path: overlays/argocd-secret.yaml
+- path: overlays/argocd-repo-server.yaml
