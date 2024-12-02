@@ -73,7 +73,7 @@ data:
           - argocd-vault-plugin
           - generate
           - s
-          - vault-configuration
+          - argocd-vault-plugin-credentials
           - "."
       lockRepo: false
 ---
