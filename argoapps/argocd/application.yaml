@@ -9,8 +9,8 @@ spec:
     repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     path: argoapps/argocd/kustomize
-    # plugin:
-    #   name: argocd-vault-plugin
+    plugin:
+      name: argocd-vault-plugin
   destination:
     namespace: argocd
     server: 'https://kubernetes.default.svc'
