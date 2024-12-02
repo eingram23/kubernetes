@@ -72,7 +72,7 @@ data:
         command:
           - argocd-vault-plugin
           - generate
-          - s
+          - - s
           - argocd-vault-plugin-credentials
           - "."
       lockRepo: false
