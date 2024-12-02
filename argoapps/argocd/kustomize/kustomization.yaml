@@ -6,6 +6,7 @@ namespace: argocd
 resources:
 - base/ingressroute.yaml
 - base/cert.yaml
+- base/argocd-repo-server-rbac.yaml
 - cmp-plugin.yaml
 - argocd-vault-plugin-credentials.yaml
 - https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.1/manifests/install.yaml
@@ -15,7 +16,7 @@ configMapGenerator:
   behavior: merge
   literals:
   - server.insecure=true
-  
+
 patches:
 - path: overlays/argocd-secret.yaml
 - path: overlays/argocd-repo-server.yaml

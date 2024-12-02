@@ -1,0 +1,24 @@
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: argocd
+  name: argocd-repo-server
+rules:
+- apiGroups: [ "" ]
+  resources: [ "secrets" ]
+  verbs: [ "get", "list", "watch" ]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: argocd-repo-server
+  namespace: argocd
+subjects:
+- kind: ServiceAccount
+  name: argocd-repo-server
+  namespace: argocd
+roleRef:
+  kind: Role
+  name: argocd-repo-server
+  apiGroup: rbac.authorization.k8s.io
