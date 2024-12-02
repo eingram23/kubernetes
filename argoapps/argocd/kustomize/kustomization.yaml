@@ -3,17 +3,12 @@ kind: Kustomization
 
 namespace: argocd
 
-images:
-  - name: quay.io/argoproj/argocd
-    newTag: v2.7.9
-
 resources:
-- https://github.com/argoproj/argo-cd//manifests/cluster-install?ref=v2.7.9
 - base/ingressroute.yaml
 - base/cert.yaml
 - cmp-plugin.yaml
 - argocd-vault-plugin-credentials.yaml
-# - https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.1/manifests/install.yaml
+- https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.1/manifests/install.yaml
 
 patches:
 - path: overlays/argocd-secret.yaml
