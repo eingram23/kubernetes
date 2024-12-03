@@ -9,8 +9,6 @@ spec:
     repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     path: argoapps/awx/kustomize
-    plugin:
-      name: argocd-vault-plugin
   destination:
     namespace: awx
     server: 'https://kubernetes.default.svc'

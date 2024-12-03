@@ -6,11 +6,11 @@ metadata:
 spec:
   admin_user: admin
   admin_email: edward.ingram23@gmail.com
-  # admin_password_secret: awx-admin-password
+  admin_password_secret: awx-admin-password
   service_type: ClusterIP
   # default nodeport_port is 30080
   # nodeport_port: <nodeport_port>
-  # secret_key_secret: awx-secret-key
+  secret_key_secret: awx-secret-key
   postgres_resource_requirements:
     requests:
       cpu: 250m
@@ -64,4 +64,4 @@ spec:
     - SETUID
     - SETGID
   task_privileged: true
-  # bundle_cacert_secret: homelab-bundleca-tls
+  bundle_cacert_secret: homelab-bundleca
