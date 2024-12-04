@@ -9,7 +9,7 @@ spec:
     - web
     - websecure
   routes:
-  - match: Host(`awx{{ suffix }}.local.lan`) 
+  - match: Host(`awx-test.local.lan`) 
     kind: Rule
     services:
     - name: awx-service
