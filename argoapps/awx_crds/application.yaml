@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: awx-operator
+  name: awx-crds
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/ansible/awx-operator
     targetRevision: 2.19.1
-    path: config/default
+    path: config/crd
   destination:
-    namespace: awx
+    # namespace: awx
     server: 'https://kubernetes.default.svc'
   syncPolicy:
     syncOptions:
-      - CreateNamespace=true
+      - CreateNamespace=false
