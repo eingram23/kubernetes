@@ -246,7 +246,7 @@ prometheus-windows-exporter:
   ##
   prometheus:
     monitor:
-      enabled: false
+      enabled: true
       jobLabel: jobLabel
 
   releaseLabel: true
@@ -269,7 +269,7 @@ alertmanager:
 
   ## Deploy alertmanager
   ##
-  enabled: false
+  enabled: true
 
   ## Annotations for Alertmanager
   ##
@@ -2181,7 +2181,7 @@ kube-state-metrics:
 ## Deploy node exporter as a daemonset to all nodes
 ##
 nodeExporter:
-  enabled: false
+  enabled: true
   operatingSystems:
     linux:
       enabled: true
