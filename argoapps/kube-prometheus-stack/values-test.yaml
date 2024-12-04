@@ -3949,14 +3949,14 @@ prometheus:
           resources:
             requests:
               storage: 10Gi
-        selector: {}
+        # selector: {}
 
-    ## Using tmpfs volume
-    ##
-    #  emptyDir:
-    #    medium: Memory
+        ## Using tmpfs volume
+        ##
+        #  emptyDir:
+        #    medium: Memory
 
-    # Additional volumes on the output StatefulSet definition.
+        # Additional volumes on the output StatefulSet definition.
     volumes: []
 
     # Additional VolumeMounts on the output StatefulSet definition.
