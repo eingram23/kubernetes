@@ -1,0 +1,14 @@
+kind: IngressRoute
+apiVersion: traefik.containo.us/v1alpha1
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  entryPoints: 
+    - web
+  routes:
+  - match: Host(`prom-k3s.local.lan`) 
+    kind: Rule
+    services:
+    - name: prometheus-external
+      port: 9090
