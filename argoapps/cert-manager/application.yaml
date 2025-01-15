@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: cert-manager
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   destination:
     namespace: cert-manager
@@ -15,9 +17,13 @@ spec:
       helm:
         valuesObject:
           installCRDs: true
+      annotations:
+        argocd.argoproj.io/sync-wave: "-2"  # Install cert-manager and CRDs first
     - repoURL: https://github.com/eingram23/kubernetes.git
       targetRevision: main
       path: argoapps/cert-manager/manifests
+      annotations:
+        argocd.argoproj.io/sync-wave: "-1"  # Apply custom manifests after CRDs are ready
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
