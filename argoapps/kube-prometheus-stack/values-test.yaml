@@ -1804,8 +1804,8 @@ kubeEtcd:
 
   ## If your etcd is not deployed as a pod, specify IPs it can be found on
   ##
-  endpoints: []
-  # - 10.141.4.22
+  endpoints:
+  - 10.10.0.13
   # - 10.141.4.23
   # - 10.141.4.24
 
