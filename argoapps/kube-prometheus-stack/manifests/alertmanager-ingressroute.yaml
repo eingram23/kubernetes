@@ -3,6 +3,8 @@ apiVersion: traefik.containo.us/v1alpha1
 metadata:
   name: alertmanager
   namespace: monitoring
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   entryPoints: 
     - web
