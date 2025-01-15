@@ -4,11 +4,11 @@ metadata:
   name: prometheus
   namespace: monitoring
 spec:
-  entryPoints: 
+  entryPoints:
     - web
   routes:
-  - match: Host(`prom-k3s.local.lan`) 
+  - match: Host(`prometheus-k3s.local.lan`) 
     kind: Rule
     services:
-    - name: prometheus-external
+    - name: kube-prometheus-stack-prometheus
       port: 9090
