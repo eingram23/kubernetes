@@ -22,5 +22,5 @@ configMapGenerator:
   - server.insecure=true
 
 patches:
-- path: overlays/argocd-secret.yaml
-- path: overlays/argocd-repo-server.yaml
+- path: base/argocd-secret.yaml
+- path: base/argocd-repo-server.yaml

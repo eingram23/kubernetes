@@ -16,13 +16,13 @@ spec:
       chart: kube-prometheus-stack
       helm:
         valueFiles:
-          - $values/argoapps/kube-prometheus-stack/values-test.yaml
+          - $values/argocd/apps/kube-prometheus-stack/values-test.yaml
     - repoURL: https://github.com/eingram23/kubernetes.git
       targetRevision: main
       ref: values
     - repoURL: https://github.com/eingram23/kubernetes.git
       targetRevision: main
-      path: argoapps/kube-prometheus-stack/manifests
+      path: argocd/apps/kube-prometheus-stack/manifests
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

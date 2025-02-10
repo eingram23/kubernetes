@@ -1,23 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: influxdb2
+  name: cert-manager
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   destination:
-    namespace: influxdb2
+    namespace: cert-manager
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - repoURL: https://helm.influxdata.com/
-      targetRevision: 2.1.2
-      chart: influxdb2
+    - repoURL: https://charts.jetstack.io
+      targetRevision: v1.16.2
+      chart: cert-manager
       helm:
-        valueFiles:
-          - $values/argoapps/influxdb2/values-prod.yaml
+        valuesObject:
+          installCRDs: true
     - repoURL: https://github.com/eingram23/kubernetes.git
       targetRevision: main
-      ref: values
+      path: argocd/apps/cert-manager/manifests
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

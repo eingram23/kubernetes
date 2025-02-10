@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argoapps/awx/kustomize
+    path: argocd/apps/awx/kustomize
   destination:
     namespace: awx
     server: 'https://kubernetes.default.svc'

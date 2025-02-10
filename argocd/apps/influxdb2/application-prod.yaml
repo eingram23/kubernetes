@@ -14,7 +14,7 @@ spec:
       chart: influxdb2
       helm:
         valueFiles:
-          - $values/argoapps/influxdb2/values-test.yaml
+          - $values/argocd/apps/influxdb2/values-prod.yaml
     - repoURL: https://github.com/eingram23/kubernetes.git
       targetRevision: main
       ref: values
