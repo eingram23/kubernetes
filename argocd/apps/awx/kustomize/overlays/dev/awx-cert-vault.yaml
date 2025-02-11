@@ -8,8 +8,8 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: vault-cluster-issuer
-  commonName: awx-test.local.lan
+  commonName: awx-dev.local.lan
   dnsNames:
-  - awx-test.local.lan
+  - awx-dev.local.lan
   duration: 8760h
   renewBefore: 4380h
