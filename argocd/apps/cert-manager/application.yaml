@@ -11,12 +11,12 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - repoURL: https://charts.jetstack.io
-      targetRevision: v1.16.2
-      chart: cert-manager
+    - repoURL: https://github.com/eingram23/kubernetes.git
+      targetRevision: main
+      path: argocd/apps/cert-manager
       helm:
-        valuesObject:
-          installCRDs: true
+        valueFiles:
+          - values.yaml
     - repoURL: https://github.com/eingram23/kubernetes.git
       targetRevision: main
       path: argocd/apps/cert-manager/manifests
