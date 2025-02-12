@@ -11,12 +11,12 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - repoURL: https://prometheus-community.github.io/helm-charts
-      targetRevision: 66.2.2
-      chart: kube-prometheus-stack
+    - repoURL: https://github.com/eingram23/kubernetes.git
+      targetRevision: main
+      path: argocd/apps/kube-prometheus-stack/
       helm:
         valueFiles:
-          - $values/argocd/apps/kube-prometheus-stack/values-test.yaml
+          - $values/argocd/apps/kube-prometheus-stack/values-dev.yaml
     - repoURL: https://github.com/eingram23/kubernetes.git
       targetRevision: main
       ref: values
