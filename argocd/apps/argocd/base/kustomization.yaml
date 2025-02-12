@@ -4,8 +4,6 @@ kind: Kustomization
 namespace: argocd
 
 resources:
-- argocd-ingressroute.yaml
-- cert.yaml
 - argocd-repo-server-rbac.yaml
 - cmp-plugin.yaml
 - argocd-vault-plugin-credentials.yaml

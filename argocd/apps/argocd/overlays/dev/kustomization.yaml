@@ -11,3 +11,4 @@ resources:
 - https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.1/manifests/install.yaml
 - ../../base
 - cert.yaml
+- argocd-ingressroute.yaml
