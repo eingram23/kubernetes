@@ -1,9 +1,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+images:
+- name: quay.io/argoproj/argocd
+  newTag: v2.13.1
+
 namespace: argocd
 
 resources:
+# - https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.1/manifests/install.yaml
+- argocd-install.yaml
 - argocd-repo-server-rbac.yaml
 - cmp-plugin.yaml
 - argocd-vault-plugin-credentials.yaml
