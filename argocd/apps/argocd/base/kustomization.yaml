@@ -8,11 +8,11 @@ images:
 namespace: argocd
 
 resources:
-- base/ingressroute.yaml
-- base/cert.yaml
-- base/argocd-repo-server-rbac.yaml
-- base/cmp-plugin.yaml
-- base/argocd-vault-plugin-credentials.yaml
+- argocd-ingressroute.yaml
+- cert.yaml
+- argocd-repo-server-rbac.yaml
+- cmp-plugin.yaml
+- argocd-vault-plugin-credentials.yaml
 - https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.1/manifests/install.yaml
 
 configMapGenerator:
@@ -22,5 +22,5 @@ configMapGenerator:
   - server.insecure=true
 
 patches:
-- path: base/argocd-secret.yaml
-- path: base/argocd-repo-server.yaml
+- path: argocd-secret.yaml
+- path: argocd-repo-server.yaml
