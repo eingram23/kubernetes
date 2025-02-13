@@ -4117,8 +4117,8 @@ prometheus:
 
     ## The remote_write spec configuration for Prometheus.
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api-reference/api.md#remotewritespec
-    remoteWrite: []
-    # - url: http://remote1/push
+    remoteWrite:
+    - url: http://prom.local.lan:9090/api/v1/write
     ## additionalRemoteWrite is appended to remoteWrite
     additionalRemoteWrite: []
 
