@@ -11,17 +11,20 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - repoURL: https://github.com/eingram23/kubernetes.git
-      targetRevision: main
-      path: argocd/apps/kube-prometheus-stack/
-      helm:
-        valueFiles:
-          - values-promonly.yaml
-    - repoURL: https://github.com/eingram23/kubernetes.git
-      targetRevision: main
-      path: argocd/apps/kube-prometheus-stack/manifests
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    path: argocd/apps/kube-prometheus-stack/
+    helm:
+      valueFiles:
+      - values-promonly.yaml
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    path: argocd/apps/kube-prometheus-stack/manifests
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
-      - CreateNamespace=true
-      - ServerSideApply=true
-      - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true
+    - ServerSideApply=true
+    - ApplyOutOfSyncOnly=true
