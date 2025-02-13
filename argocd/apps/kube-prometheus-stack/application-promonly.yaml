@@ -16,7 +16,7 @@ spec:
       path: argocd/apps/kube-prometheus-stack/
       helm:
         valueFiles:
-          - values-dev.yaml
+          - values-promonly.yaml
     - repoURL: https://github.com/eingram23/kubernetes.git
       targetRevision: main
       path: argocd/apps/kube-prometheus-stack/manifests
