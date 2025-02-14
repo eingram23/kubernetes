@@ -2,5 +2,5 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- ../../kustomize-apps/argocd-prod.yaml
-- ../../helm-apps/cert-manager/application-prod.yaml
+- ../../common/kustomize-apps/argocd-prod.yaml
+- ../../common/helm-apps/cert-manager/application-prod.yaml
