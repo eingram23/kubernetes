@@ -10,7 +10,7 @@ spec:
   sources:
     - repoURL: https://github.com/eingram23/kubernetes.git
       targetRevision: main
-      path: argocd/env/common/cert-manager
+      path: argocd/env/common/helm-apps/cert-manager
       helm:
         valueFiles:
           - values-prod.yaml
