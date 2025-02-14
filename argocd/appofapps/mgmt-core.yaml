@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mgmt-core
+  name: mgmt-core-appofapps
   namespace: argocd
 spec:
   project: default
