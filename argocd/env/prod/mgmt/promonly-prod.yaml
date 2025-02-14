@@ -4,7 +4,7 @@ metadata:
   name: kube-prometheus-stack
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   destination:
     namespace: monitoring
@@ -13,13 +13,13 @@ spec:
   sources:
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/apps/kube-prometheus-stack/
+    path: argocd/env/common/helm-apps/kube-prometheus-stack/
     helm:
       valueFiles:
       - values-promonly.yaml
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/apps/kube-prometheus-stack/manifests
+    path: argocd/env/common/helm-apps/kube-prometheus-stack/manifests
   syncPolicy:
     automated:
       prune: true
