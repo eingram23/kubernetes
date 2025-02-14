@@ -17,9 +17,9 @@ spec:
     helm:
       valueFiles:
       - values-promonly.yaml
-  - repoURL: https://github.com/eingram23/kubernetes.git
-    targetRevision: main
-    path: argocd/env/common/helm-apps/kube-prometheus-stack/manifests
+  # - repoURL: https://github.com/eingram23/kubernetes.git
+  #   targetRevision: main
+  #   path: argocd/env/common/helm-apps/kube-prometheus-stack/manifests
   syncPolicy:
     automated:
       prune: true
