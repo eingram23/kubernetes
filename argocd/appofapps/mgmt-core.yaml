@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/apps/argocd/overlays/prod
+    path: argocd/env/prod/mgmt
   destination:
     namespace: argocd
     server: 'https://kubernetes.default.svc'
