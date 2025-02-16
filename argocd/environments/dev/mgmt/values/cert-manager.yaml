@@ -1442,9 +1442,3 @@ creator: "helm"
 # for more info.
 # +docs:hidden
 enabled: true
-
-# Custom added values
-clusterissuer:
-  vault:
-    enabled: true
-    server: https://vault-k3s.local.lan
