@@ -8,18 +8,15 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://github.com/eingram23/kubernetes.git
-      targetRevision: main
-      path: argocd/apps/cert-manager
-      helm:
-        valueFiles:
-          - values-dev.yaml
-    - repoURL: https://github.com/eingram23/kubernetes.git
-      targetRevision: main
-      path: argocd/apps/cert-manager/manifests
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    path: argocd/apps/cert-manager
+    helm:
+      valueFiles:
+      - argocd/environments/dev/mgmt/values/cert-manager.yaml
   destination:
     namespace: cert-manager
     server: https://kubernetes.default.svc
   syncPolicy:
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true

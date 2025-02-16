@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mgmt-core-appofapps
+  name: core-app-of-apps
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/env/prod/mgmt
+    path: argocd/environments/dev/mgmt
   destination:
     namespace: argocd
     server: 'https://kubernetes.default.svc'
   syncPolicy:
     syncOptions:
-      - CreateNamespace=false
+    - CreateNamespace=false

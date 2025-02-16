@@ -13,13 +13,10 @@ spec:
   sources:
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/apps/env/base/helm-apps/kube-prometheus-stack/
+    path: argocd/apps/kube-prometheus-stack/
     helm:
       valueFiles:
-      - values-promonly.yaml
-  - repoURL: https://github.com/eingram23/kubernetes.git
-    targetRevision: main
-    path: argocd/apps/env/base/helm-apps/kube-prometheus-stack/manifests
+      - argocd/environments/dev/mgmt/values/kps.promonly.yaml
   syncPolicy:
     automated:
       prune: true

@@ -8,10 +8,10 @@ spec:
   source:
     repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/apps/environments/dev/mgmt/overlays/argocd
+    path: argocd/environments/dev/mgmt/overlays/argocd
   destination:
     namespace: argocd
     server: 'https://kubernetes.default.svc'
   syncPolicy:
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true
