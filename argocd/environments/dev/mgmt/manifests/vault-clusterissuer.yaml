@@ -1,4 +1,3 @@
-{{- if and .Values.clusterissuer.vault (.Values.clusterissuer.vault.enabled) }}
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
@@ -8,7 +7,7 @@ metadata:
 spec:
   vault:
     path: pki_int/sign/local-dot-lan
-    server: {{ .Values.clusterissuer.vault.server }}
+    server: { ? { .Values.clusterissuer.vault.server } }
     caBundle: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJkekNDQVIyZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQWpNU0V3SHdZRFZRUUREQmhyTTNNdGMyVnkKZG1WeUxXTmhRREUzTURjNE9EWTFPRE13SGhjTk1qUXdNakUwTURRMU5qSXpXaGNOTXpRd01qRXhNRFExTmpJegpXakFqTVNFd0h3WURWUVFEREJock0zTXRjMlZ5ZG1WeUxXTmhRREUzTURjNE9EWTFPRE13V1RBVEJnY3Foa2pPClBRSUJCZ2dxaGtqT1BRTUJCd05DQUFSRGVoMWdKUSsraEhkaW1FYjVQUGs4Um9rTi9lcDRaRmx0R0EvZWNDOC8KRDZ1ZGN5dFBuVyt4WWZEVDhqV25JYi80aHNnem0wcVlSMHVMa3RneEU2TDJvMEl3UURBT0JnTlZIUThCQWY4RQpCQU1DQXFRd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFRmdRVVNrQ2E1UTVMYlJ1R0ExbTJLZmxsCmkxMnI5TUl3Q2dZSUtvWkl6ajBFQXdJRFNBQXdSUUloQUoxNmd4NlFUMEVURTl5RWxpbVFOMnBIbktFbGFaWjgKTDIzenl0UDZnc250QWlCWUxCSDRmeG85bURCaHQ0U0g4TDRXa202dXpxVDJ1ZGFNQW5SNzFIWHE3UT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
     auth:
       appRole:
@@ -17,4 +16,3 @@ spec:
         secretRef:
           name: cert-manager-vault-approle
           key: secretId
-{{- end}}
