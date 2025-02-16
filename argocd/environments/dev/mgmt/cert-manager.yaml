@@ -13,7 +13,10 @@ spec:
     path: argocd/apps/cert-manager
     helm:
       valueFiles:
-      - ../../environments/dev/mgmt/values/cert-manager.yaml
+      - $values/environments/dev/mgmt/values/cert-manager.yaml
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    ref: values
   destination:
     namespace: cert-manager
     server: https://kubernetes.default.svc
