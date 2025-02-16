@@ -16,7 +16,10 @@ spec:
     path: argocd/apps/kube-prometheus-stack/
     helm:
       valueFiles:
-      - argocd/environments/dev/mgmt/values/kps.promonly.yaml
+      - $values/environments/dev/mgmt/values/kps.promonly.yaml
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    ref: values
   syncPolicy:
     automated:
       prune: true
