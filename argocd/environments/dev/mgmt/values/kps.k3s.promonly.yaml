@@ -48,31 +48,31 @@ defaultRules:
   create: true
   rules:
     alertmanager: true
-    etcd: true
+    etcd: false
     configReloaders: true
     general: true
-    k8sContainerCpuUsageSecondsTotal: true
-    k8sContainerMemoryCache: true
-    k8sContainerMemoryRss: true
-    k8sContainerMemorySwap: true
-    k8sContainerResource: true
-    k8sContainerMemoryWorkingSetBytes: true
+    k8sContainerCpuUsageSecondsTotal: false
+    k8sContainerMemoryCache: false
+    k8sContainerMemoryRss: false
+    k8sContainerMemorySwap: false
+    k8sContainerResource: false
+    k8sContainerMemoryWorkingSetBytes: false
     k8sPodOwner: true
-    kubeApiserverAvailability: true
-    kubeApiserverBurnrate: true
-    kubeApiserverHistogram: true
-    kubeApiserverSlos: true
-    kubeControllerManager: true
-    kubelet: true
+    kubeApiserverAvailability: false
+    kubeApiserverBurnrate: false
+    kubeApiserverHistogram: false
+    kubeApiserverSlos: false
+    kubeControllerManager: false
+    kubelet: false
     kubeProxy: true
     kubePrometheusGeneral: true
     kubePrometheusNodeRecording: true
     kubernetesApps: true
-    kubernetesResources: true
-    kubernetesStorage: true
-    kubernetesSystem: true
-    kubeSchedulerAlerting: true
-    kubeSchedulerRecording: true
+    kubernetesResources: false
+    kubernetesStorage: false
+    kubernetesSystem: false
+    kubeSchedulerAlerting: false
+    kubeSchedulerRecording: false
     kubeStateMetrics: true
     network: true
     node: true
@@ -80,7 +80,7 @@ defaultRules:
     nodeExporterRecording: true
     prometheus: true
     prometheusOperator: true
-    windows: true
+    windows: false
 
   ## Reduce app namespace alert scope
   appNamespacesTarget: ".*"
@@ -269,7 +269,7 @@ alertmanager:
 
   ## Deploy alertmanager
   ##
-  enabled: true
+  enabled: false
 
   ## Annotations for Alertmanager
   ##
@@ -994,7 +994,7 @@ alertmanager:
   ## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
   ##
 grafana:
-  enabled: true
+  enabled: false
   namespaceOverride: ""
 
   ## ForceDeployDatasources Create datasource configmap even if grafana deployment has been disabled
@@ -1225,7 +1225,7 @@ kubernetesServiceMonitors:
 ## Component scraping the kube api server
 ##
 kubeApiServer:
-  enabled: true
+  enabled: false
   tlsConfig:
     serverName: kubernetes
     insecureSkipVerify: false
@@ -1303,7 +1303,7 @@ kubeApiServer:
 ## Component scraping the kubelet and kubelet-hosted cAdvisor
 ##
 kubelet:
-  enabled: true
+  enabled: false
   namespace: kube-system
 
   serviceMonitor:
@@ -1513,7 +1513,7 @@ kubelet:
 ## Component scraping the kube controller manager
 ##
 kubeControllerManager:
-  enabled: true
+  enabled: false
 
   ## If your kube controller manager is not deployed as a pod, specify IPs it can be found on
   ##
@@ -1800,7 +1800,7 @@ kubeDns:
 ## Component scraping etcd
 ##
 kubeEtcd:
-  enabled: true
+  enabled: false
 
   ## If your etcd is not deployed as a pod, specify IPs it can be found on
   ##
@@ -1909,7 +1909,7 @@ kubeEtcd:
 ## Component scraping kube scheduler
 ##
 kubeScheduler:
-  enabled: true
+  enabled: false
 
   ## If your kube scheduler is not deployed as a pod, specify IPs it can be found on
   ##
@@ -2015,7 +2015,7 @@ kubeScheduler:
 ## Component scraping kube proxy
 ##
 kubeProxy:
-  enabled: true
+  enabled: false
 
   ## If your kube proxy is not deployed as a pod, specify IPs it can be found on
   ##
@@ -2763,7 +2763,7 @@ prometheusOperator:
     ## If true, the operator will create and maintain a service for scraping kubelets
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/helm/prometheus-operator/README.md
     ##
-    enabled: true
+    enabled: false
     namespace: kube-system
     selector: ""
     ## Use '{{ template "kube-prometheus-stack.fullname" . }}-kubelet' by default
@@ -3032,7 +3032,7 @@ prometheus:
   ## Note many of features described below (e.g. rules, query, alerting, remote read, thanos) will not work in agent mode.
   ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/designs/prometheus-agent.md
   ##
-  agentMode: false
+  agentMode: true
 
   ## Annotations for Prometheus
   ##
