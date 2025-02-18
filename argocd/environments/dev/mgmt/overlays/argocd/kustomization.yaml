@@ -4,5 +4,6 @@ kind: Kustomization
 namespace: argocd
 
 resources:
-- ../../../../apps/argocd
+# - ../../../../../apps/argocd
+- https://github.com/eingram23/kubernetes.git/argocd/apps/argocd?ref=main
 - cert.yaml
