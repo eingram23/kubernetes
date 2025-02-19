@@ -5,3 +5,4 @@ resources:
 - kps.k3s.promonly.yaml
 - cert-manager.yaml
 - argocd.yaml
+- vault.yaml
