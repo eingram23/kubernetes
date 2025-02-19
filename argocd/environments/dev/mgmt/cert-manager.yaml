@@ -19,7 +19,7 @@ spec:
     ref: values
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/environments/dev/mgmt/manifests
+    path: argocd/environments/dev/mgmt/manifests/cert-manager
   destination:
     namespace: cert-manager
     server: https://kubernetes.default.svc
