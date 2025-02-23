@@ -909,6 +909,10 @@ server:
           tls_disable = 1
           address = "[::]:8200"
           cluster_address = "[::]:8201"
+          tls_cert_file = "/vault/userconfig/vault-server-tls/tls.crt"
+          tls_key_file  = "/vault/userconfig/vault-server-tls/tls.key"
+          tls_client_ca_file = "/vault/userconfig/vault-server-tls/ca.crt"
+          tls_disable_client_certs = true
           # Enable unauthenticated metrics access (necessary for Prometheus Operator)
           telemetry {
            unauthenticated_metrics_access = "true"
@@ -925,9 +929,9 @@ server:
         # GKMS keys must already exist, and the cluster must have a service account
         # that is authorized to access GCP KMS.
         seal "azurekeyvault" {
-          client_id     = <CLIENT_ID>
-          client_secret     = <CLIENT_SECRET>
-          tenant_id    = <TENANT_ID>
+          client_id     = <vault:secret/azure/app/vault:id>
+          client_secret     = <vault:secret/azure/app/vault:secret>
+          tenant_id    = <vault:secret/azure/tenant:id>
           vault_name  = "vault-key-data"
           key_name    = "vault-unseal-key"
           use_rbac    = "true"
