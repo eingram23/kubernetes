@@ -15,8 +15,6 @@ spec:
         - name: HELM_VALUES
           value: |
             global:
-              # enabled is the master enabled switch. Setting this to true or false
-              # will enable or disable all the components within this chart by default.
               enabled: false
   destination:
     namespace: vault
