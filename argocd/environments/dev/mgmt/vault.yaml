@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   sources:
-    repoURL: https://github.com/eingram23/kubernetes.git
+  - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     path: argocd/apps/vault
     plugin:
@@ -922,9 +922,13 @@ spec:
                     ui = true
 
                     listener "tcp" {
-                      tls_disable = 1
+                      tls_disable = 0
                       address = "[::]:8200"
                       cluster_address = "[::]:8201"
+                      tls_cert_file = "/vault/userconfig/vault-server-tls/tls.crt"
+                      tls_key_file  = "/vault/userconfig/vault-server-tls/tls.key"
+                      tls_client_ca_file = "/vault/userconfig/vault-server-tls/ca.crt"
+                      tls_disable_client_certs = true
                       # Enable unauthenticated metrics access (necessary for Prometheus Operator)
                       telemetry {
                       unauthenticated_metrics_access = "true"
