@@ -13,7 +13,7 @@ spec:
       name: argocd-vault-plugin-helm
       env:
         - name: HELM_VALUES
-          value: |
+          values: |
             # Copyright (c) HashiCorp, Inc.
             # SPDX-License-Identifier: MPL-2.0
 
