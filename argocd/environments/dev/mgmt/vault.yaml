@@ -12,12 +12,12 @@ spec:
     plugin:
       name: argocd-vault-plugin-helm
       env:
-        - name: HELM_VALUE
+        - name: HELM_VALUES
           value: |
             global:
               # enabled is the master enabled switch. Setting this to true or false
               # will enable or disable all the components within this chart by default.
-              enabled: false
+              enabled: true
 
               # The namespace to deploy to. Defaults to the `helm` installation namespace.
               namespace: ""
@@ -29,7 +29,7 @@ spec:
               #   - name: image-pull-secret
 
               # TLS for end-to-end encrypted transport
-              tlsDisable: true
+              tlsDisable: false
 
               # External vault server address for the injector and CSI provider to use.
               # Setting this will disable deployment of a vault server.
