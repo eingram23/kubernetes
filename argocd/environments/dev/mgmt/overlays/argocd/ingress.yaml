@@ -18,4 +18,8 @@ spec:
                 name: argocd-server
                 port:
                   number: 80
+  tls:
+    - hosts:
+        - argocd-k3s-mgmt.local.lan
+      secretName: argocd-tls
   ingressClassName: nginx
