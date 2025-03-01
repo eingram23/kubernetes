@@ -8,8 +8,8 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: vault-cluster-issuer
-  commonName: argocd-dev.local.lan
+  commonName: argocd-k3s-mgmt.local.lan
   dnsNames:
-    - argocd-dev.local.lan
+    - argocd-k3s-mgmt.local.lan
   duration: 8760h
   renewBefore: 4380h
