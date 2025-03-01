@@ -5,5 +5,4 @@ namespace: argocd
 
 resources:
 - https://github.com/eingram23/kubernetes.git/argocd/apps/argocd?ref=main
-- cert.yaml
 - ingress.yaml
