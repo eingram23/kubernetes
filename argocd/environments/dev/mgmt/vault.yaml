@@ -290,7 +290,7 @@ spec:
               # extraEnvironmentVars is a list of extra environment variables to set in the
               # injector deployment.
               extraEnvironmentVars:
-                VAULT_CACERT: /vault/userconfig/vault-server-tls/ca.crt
+                # VAULT_CACERT: /vault/userconfig/vault-server-tls/ca.crt
                 # KUBERNETES_SERVICE_HOST: kubernetes.default.svc
 
               # Affinity Settings for injector pods
@@ -1284,7 +1284,7 @@ spec:
 
               # Configures the log level for the Vault CSI provider.
               # Supported log levels include: trace, debug, info, warn, error, and off
-              logLevel: "info"
+              logLevel: ""
 
               # Deprecated, set logLevel to debug instead.
               # If set to true, the logLevel will be set to debug.
