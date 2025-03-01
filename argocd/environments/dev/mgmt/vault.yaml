@@ -950,9 +950,9 @@ spec:
                     # GKMS keys must already exist, and the cluster must have a service account
                     # that is authorized to access GCP KMS.
                     seal "azurekeyvault" {
-                      client_id     = <path:azure/app/vault#id>
-                      client_secret     = <path:azure/app/vault#secret>
-                      tenant_id    = <path:azure/tenant#id>
+                      client_id     = <path:secret/azure/app/vault#id>
+                      client_secret     = <path:secret/azure/app/vault#secret>
+                      tenant_id    = <path:secret/azure/tenant#id>
                       vault_name  = "vault-key-data"
                       key_name    = "vault-unseal-key"
                       use_rbac    = "true"
