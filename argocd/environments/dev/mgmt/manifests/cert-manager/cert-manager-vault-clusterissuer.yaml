@@ -4,7 +4,6 @@ metadata:
   name: vault-cluster-issuer
   annotations:
     avp.kubernetes.io/path: "secret/cert/vault-k3s-mgmt/"
-    argocd.argoproj.io/sync-wave: "1"
 spec:
   vault:
     server: https://vault.vault.svc.cluster.local:8200
@@ -17,5 +16,3 @@ spec:
         secretRef:
           name: issuer-token-k3s-mgmt
           key: token
-          audiences:
-            - "vault://vault-cluster-issuer"
