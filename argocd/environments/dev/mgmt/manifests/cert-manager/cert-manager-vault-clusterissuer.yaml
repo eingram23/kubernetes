@@ -17,3 +17,5 @@ spec:
         secretRef:
           name: issuer-token-k3s-mgmt
           key: token
+          audiences:
+            - "vault://vault-cluster-issuer"
