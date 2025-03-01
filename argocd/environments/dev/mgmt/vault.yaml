@@ -5,6 +5,11 @@ metadata:
   namespace: argocd
 spec:
   project: default
+  ignoreDifferences:
+    - group: admissionregistration.k8s.io
+      kind: MutatingWebhookConfiguration
+      jqPathExpressions:
+        - '.webhooks[]?.clientConfig.caBundle'
   source:
     repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
@@ -1284,7 +1289,7 @@ spec:
 
               # Configures the log level for the Vault CSI provider.
               # Supported log levels include: trace, debug, info, warn, error, and off
-              logLevel: ""
+              logLevel: "info"
 
               # Deprecated, set logLevel to debug instead.
               # If set to true, the logLevel will be set to debug.
