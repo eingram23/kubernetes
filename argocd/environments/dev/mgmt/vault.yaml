@@ -730,7 +730,7 @@ spec:
 
                 # Configures the service type for the main Vault service.  Can be ClusterIP
                 # or NodePort.
-                #type: ClusterIP
+                type: ClusterIP
 
                 # The IP family and IP families options are to set the behaviour in a dual-stack environment.
                 # Omitting these values will let the service fall back to whatever the CNI dictates the defaults
@@ -933,7 +933,7 @@ spec:
                       tls_cert_file = "/vault/userconfig/vault-server-tls/tls.crt"
                       tls_key_file  = "/vault/userconfig/vault-server-tls/tls.key"
                       tls_client_ca_file = "/vault/userconfig/vault-server-tls/ca.crt"
-                      tls_disable_client_certs = true
+                      tls_disable_client_certs = false
                       # Enable unauthenticated metrics access (necessary for Prometheus Operator)
                       telemetry {
                         unauthenticated_metrics_access = "true"
@@ -942,6 +942,13 @@ spec:
 
                     storage "raft" {
                       path = "/vault/data"
+
+                      retry_join {
+                        leader_api_addr = "https://vault-0.vault-internal:8200"
+                        leader_ca_cert_file = "/vault/userconfig/vault-server-tls/ca.crt"
+                        leader_client_cert_file = "/vault/userconfig/vault-server-tls/tls.crt"
+                        leader_client_key_file = "/vault/userconfig/vault-server-tls/tls.key"
+                      }
                     }
 
                     service_registration "kubernetes" {}
