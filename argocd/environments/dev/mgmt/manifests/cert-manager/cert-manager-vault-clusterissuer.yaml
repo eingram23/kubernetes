@@ -9,6 +9,7 @@ spec:
   vault:
     server: https://vault.vault.svc.cluster.local:8200
     path: pki_int/sign/local-dot-lan
+    caBundle: <base64>
     auth:
       kubernetes:
         mountPath: /v1/auth/kubernetes
