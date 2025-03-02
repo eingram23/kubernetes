@@ -1338,13 +1338,13 @@ spec:
                 #  https://github.com/prometheus-operator/kube-prometheus
 
                 # Enable deployment of the Vault Server ServiceMonitor CustomResource.
-                enabled: true"
+                enabled: true
 
                 # Selector labels to add to the ServiceMonitor.
                 # When empty, defaults to:
                 # release: prometheus
                 selectors:
-                  - release: kube-prometheus-stack
+                  release: kube-prometheus-stack
 
                 # Interval at which Prometheus scrapes metrics
                 interval: 30s
@@ -1384,7 +1384,7 @@ spec:
                 # When empty, defaults to:
                 # release: prometheus
                 selectors:
-                  - release: kube-prometheus-stack
+                  release: kube-prometheus-stack
 
                 # Some example rules.
                 rules:
