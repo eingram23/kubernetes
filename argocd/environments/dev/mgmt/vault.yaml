@@ -1307,7 +1307,6 @@ spec:
             # For more information see:
             # https://developer.hashicorp.com/vault/docs/configuration/telemetry
             # https://developer.hashicorp.com/vault/docs/internals/telemetry
-            serverTelemetry:
               # Enable support for the Prometheus Operator. If authorization is not set for authenticating
               # to Vault's metrics endpoint, the following Vault server `telemetry{}` config must be included
               # in the `listener "tcp"{}` stanza
