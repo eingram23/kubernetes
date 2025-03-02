@@ -1326,80 +1326,80 @@ spec:
               #  }
               #
               # Configuration for monitoring the Vault server.
-              serviceMonitor:
-                # The Prometheus operator *must* be installed before enabling this feature,
-                # if not the chart will fail to install due to missing CustomResourceDefinitions
-                # provided by the operator.
-                #
-                # Instructions on how to install the Helm chart can be found here:
-                #  https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
-                # More information can be found here:
-                #  https://github.com/prometheus-operator/prometheus-operator
-                #  https://github.com/prometheus-operator/kube-prometheus
+              # serviceMonitor:
+              #   # The Prometheus operator *must* be installed before enabling this feature,
+              #   # if not the chart will fail to install due to missing CustomResourceDefinitions
+              #   # provided by the operator.
+              #   #
+              #   # Instructions on how to install the Helm chart can be found here:
+              #   #  https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+              #   # More information can be found here:
+              #   #  https://github.com/prometheus-operator/prometheus-operator
+              #   #  https://github.com/prometheus-operator/kube-prometheus
 
-                # Enable deployment of the Vault Server ServiceMonitor CustomResource.
-                enabled: true"
+              #   # Enable deployment of the Vault Server ServiceMonitor CustomResource.
+              #   enabled: true"
 
-                # Selector labels to add to the ServiceMonitor.
-                # When empty, defaults to:
-                # release: kube-prometheus-stack
-                selectors: {}
+              #   # Selector labels to add to the ServiceMonitor.
+              #   # When empty, defaults to:
+              #   # release: kube-prometheus-stack
+              #   selectors: {}
 
-                # Interval at which Prometheus scrapes metrics
-                interval: 30s
+              #   # Interval at which Prometheus scrapes metrics
+              #   interval: 30s
 
-                # Timeout for Prometheus scrapes
-                scrapeTimeout: 10s
+              #   # Timeout for Prometheus scrapes
+              #   scrapeTimeout: 10s
 
-                # tlsConfig used for scraping the Vault metrics API.
-                # See API reference: https://prometheus-operator.dev/docs/api-reference/api/#monitoring.coreos.com/v1.TLSConfig
-                # example:
-                # tlsConfig:
-                #   ca:
-                #     secret:
-                #       name: vault-metrics-client
-                #       key: ca.crt
-                tlsConfig: {}
+              #   # tlsConfig used for scraping the Vault metrics API.
+              #   # See API reference: https://prometheus-operator.dev/docs/api-reference/api/#monitoring.coreos.com/v1.TLSConfig
+              #   # example:
+              #   # tlsConfig:
+              #   #   ca:
+              #   #     secret:
+              #   #       name: vault-metrics-client
+              #   #       key: ca.crt
+              #   tlsConfig: {}
 
-                # authorization used for scraping the Vault metrics API.
-                # See API reference: https://prometheus-operator.dev/docs/api-reference/api/#monitoring.coreos.com/v1.SafeAuthorization
-                # example:
-                # authorization:
-                #   credentials:
-                #     name: vault-metrics-client
-                #     key: token
-                authorization: {}
+              #   # authorization used for scraping the Vault metrics API.
+              #   # See API reference: https://prometheus-operator.dev/docs/api-reference/api/#monitoring.coreos.com/v1.SafeAuthorization
+              #   # example:
+              #   # authorization:
+              #   #   credentials:
+              #   #     name: vault-metrics-client
+              #   #     key: token
+              #   authorization: {}
 
-              prometheusRules:
-                # The Prometheus operator *must* be installed before enabling this feature,
-                # if not the chart will fail to install due to missing CustomResourceDefinitions
-                # provided by the operator.
+              # prometheusRules:
+              #   # The Prometheus operator *must* be installed before enabling this feature,
+              #   # if not the chart will fail to install due to missing CustomResourceDefinitions
+              #   # provided by the operator.
 
-                # Deploy the PrometheusRule custom resource for AlertManager based alerts.
-                # Requires that AlertManager is properly deployed.
-                enabled: true
+              #   # Deploy the PrometheusRule custom resource for AlertManager based alerts.
+              #   # Requires that AlertManager is properly deployed.
+              #   enabled: true
 
-                # Selector labels to add to the PrometheusRules.
-                # When empty, defaults to:
-                # release: kube-prometheus-stack
-                selectors: {}
+              #   # Selector labels to add to the PrometheusRules.
+              #   # When empty, defaults to:
+              #   # release: kube-prometheus-stack
+              #   selectors: {}
 
-                # Some example rules.
-                rules:
-                  - alert: vault-HighResponseTime
-                    annotations:
-                      message: The response time of Vault is over 500ms on average over the last 5 minutes.
-                    expr: vault_core_handle_request{quantile="0.5", namespace="mynamespace"} > 500
-                    for: 5m
-                    labels:
-                      severity: warning
-                  - alert: vault-HighResponseTime
-                    annotations:
-                      message: The response time of Vault is over 1s on average over the last 5 minutes.
-                    expr: vault_core_handle_request{quantile="0.5", namespace="mynamespace"} > 1000
-                    for: 5m
-                    labels:
-                      severity: critical
+              #   # Some example rules.
+              #   rules:
+              #     - alert: vault-HighResponseTime
+              #       annotations:
+              #         message: The response time of Vault is over 500ms on average over the last 5 minutes.
+              #       expr: vault_core_handle_request{quantile="0.5", namespace="mynamespace"} > 500
+              #       for: 5m
+              #       labels:
+              #         severity: warning
+              #     - alert: vault-HighResponseTime
+              #       annotations:
+              #         message: The response time of Vault is over 1s on average over the last 5 minutes.
+              #       expr: vault_core_handle_request{quantile="0.5", namespace="mynamespace"} > 1000
+              #       for: 5m
+              #       labels:
+              #         severity: critical
   destination:
     namespace: vault
     server: https://kubernetes.default.svc
