@@ -1344,8 +1344,7 @@ spec:
                 # When empty, defaults to:
                 # release: prometheus
                 selectors:
-                  labels:
-                    release: kube-prometheus-stack
+                  - release: kube-prometheus-stack
 
                 # Interval at which Prometheus scrapes metrics
                 interval: 30s
@@ -1385,8 +1384,7 @@ spec:
                 # When empty, defaults to:
                 # release: prometheus
                 selectors:
-                  labels:
-                    release: kube-prometheus-stack
+                  - release: kube-prometheus-stack
 
                 # Some example rules.
                 rules:
