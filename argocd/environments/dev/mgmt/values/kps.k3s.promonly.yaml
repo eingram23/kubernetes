@@ -410,7 +410,6 @@ alertmanager:
     ## Hosts must be provided if Ingress is enabled.
     ##
     hosts:
-    - alertmanager-k3s.local.lan
     # - alertmanager.domain.com
 
     ## Paths to use for ingress rules - one path should match the alertmanagerSpec.routePrefix
@@ -1051,7 +1050,7 @@ grafana:
     # hosts:
     #   - grafana.domain.com
     hosts:
-    - grafana-k3s.local.lan
+    # - grafana.local.lan
     ## Path for grafana ingress
     path: /
 
@@ -3356,7 +3355,7 @@ prometheus:
     # hosts:
     #   - prometheus.domain.com
     hosts:
-    - prometheus-k3s.local.lan
+    - prometheus-k3s-mgmt.local.lan
     ## Paths to use for ingress rules - one path should match the prometheusSpec.routePrefix
     ##
     paths: []

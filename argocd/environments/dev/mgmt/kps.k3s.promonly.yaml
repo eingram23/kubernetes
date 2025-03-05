@@ -22,7 +22,7 @@ spec:
     ref: values
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/apps/kube-prometheus-stack/manifests/
+    path: argocd/environments/dev/mgmt/manifests/kube-prometheus-stack
   syncPolicy:
     automated:
       prune: true
