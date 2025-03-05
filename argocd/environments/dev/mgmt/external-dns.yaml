@@ -337,5 +337,8 @@ spec:
     namespace: external-dns
     server: https://kubernetes.default.svc
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
