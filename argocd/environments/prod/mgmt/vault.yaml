@@ -10,8 +10,11 @@ spec:
       kind: MutatingWebhookConfiguration
       jqPathExpressions:
         - '.webhooks[]?.clientConfig.caBundle'
-  source:
-    repoURL: https://github.com/eingram23/kubernetes.git
+  sources:
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    path: argocd/environments/prod/mgmt/manifests/vault
+  - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     path: argocd/apps/vault
     plugin:

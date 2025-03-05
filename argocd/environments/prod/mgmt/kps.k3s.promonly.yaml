@@ -1,31 +1,33 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: kube-prometheus-stack
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
   project: default
   sources:
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/apps/cert-manager
+    path: argocd/apps/kube-prometheus-stack/
     helm:
       valueFiles:
-      - $values/argocd/environments/prod/mgmt/values/cert-manager.yaml
+      - $values/argocd/environments/prod/mgmt/values/kps.k3s.promonly.yaml
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     ref: values
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/environments/prod/mgmt/manifests/cert-manager
-  destination:
-    namespace: cert-manager
-    server: https://kubernetes.default.svc
+    path: argocd/environments/prod/mgmt/manifests/kube-prometheus-stack
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+    - ServerSideApply=true
+    - ApplyOutOfSyncOnly=true

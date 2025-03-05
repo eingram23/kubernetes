@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vault-server-tls
+  annotations:
+    avp.kubernetes.io/path: "secret/vault/k3s-mgmt/"
+  namespace: vault
+  labels:
+    app.kubernetes.io/name: vault
+    app.kubernetes.io/instance: vault
+type: Opaque
+data:
+  tls.key: <vault_key>
+  tls.crt: <vault_crt>
+  ca.crt: <vault_ca>

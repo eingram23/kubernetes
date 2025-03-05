@@ -1,27 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager
+  name: ingress-nginx
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
 spec:
   project: default
   sources:
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/apps/cert-manager
+    path: argocd/apps/ingress-nginx
     helm:
       valueFiles:
-      - $values/argocd/environments/prod/mgmt/values/cert-manager.yaml
+      - $values/argocd/environments/prod/mgmt/values/ingress-nginx.yaml
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     ref: values
-  - repoURL: https://github.com/eingram23/kubernetes.git
-    targetRevision: main
-    path: argocd/environments/prod/mgmt/manifests/cert-manager
   destination:
-    namespace: cert-manager
+    namespace: ingress-nginx
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
