@@ -5,8 +5,8 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  sources:
-  - repoURL: https://github.com/eingram23/kubernetes.git
+  source:
+    repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     path: argocd/apps/external-dns
     plugin:
