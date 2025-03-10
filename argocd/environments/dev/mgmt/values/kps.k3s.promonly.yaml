@@ -269,7 +269,7 @@ alertmanager:
 
   ## Deploy alertmanager
   ##
-  enabled: false
+  enabled: true
 
   ## Annotations for Alertmanager
   ##
@@ -397,7 +397,9 @@ alertmanager:
     # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
     # ingressClassName: nginx
 
-    annotations: {}
+    annotations:
+      cert-manager.io/cluster-issuer: "vault-cluster-issuer"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 
     labels: {}
 
@@ -410,12 +412,12 @@ alertmanager:
     ## Hosts must be provided if Ingress is enabled.
     ##
     hosts:
-    # - alertmanager.domain.com
+      - alertmanager-k3s-mgmt.local.lan
 
     ## Paths to use for ingress rules - one path should match the alertmanagerSpec.routePrefix
     ##
-    paths: []
-    # - /
+    paths:
+      - /
 
     ## For Kubernetes >= 1.18 you should specify the pathType (determines how Ingress paths should be matched)
     ## See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#better-path-matching-with-path-types
@@ -424,10 +426,10 @@ alertmanager:
     ## TLS configuration for Alertmanager Ingress
     ## Secret must be manually created in the namespace
     ##
-    tls: []
-    # - secretName: alertmanager-general-tls
-    #   hosts:
-    #   - alertmanager.example.com
+    tls:
+      - secretName: alertmanager-tls
+        hosts:
+        - alertmanager-k3s-mgmt.local.lan
 
     # -- BETA: Configure the gateway routes for the chart here.
     # More routes can be added by adding a dictionary key like the 'main' route.
@@ -493,8 +495,8 @@ alertmanager:
 
     ## Paths to use for ingress rules
     ##
-    paths: []
-    # - /
+    paths:
+      - /
 
     ## For Kubernetes >= 1.18 you should specify the pathType (determines how Ingress paths should be matched)
     ## See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#better-path-matching-with-path-types
@@ -794,14 +796,14 @@ alertmanager:
     ## Storage is the definition of how storage will be used by the Alertmanager instances.
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
     ##
-    storage: {}
-    volumeClaimTemplate:
-      spec:
-        storageClassName: local-path
-        accessModes: [ "ReadWriteOnce" ]
-        resources:
-          requests:
-            storage: 5Gi
+    storage:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: vsphere-csi
+          accessModes: [ "ReadWriteOnce" ]
+          resources:
+            requests:
+              storage: 5Gi
       # selector: {}
 
       ## The external URL the Alertmanager instances will be available under. This is necessary to generate correct URLs. This is necessary if Alertmanager is not served from root of a DNS name. string  false
@@ -993,7 +995,7 @@ alertmanager:
   ## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
   ##
 grafana:
-  enabled: false
+  enabled: true
   namespaceOverride: ""
 
   ## ForceDeployDatasources Create datasource configmap even if grafana deployment has been disabled
@@ -1032,11 +1034,13 @@ grafana:
     ## IngressClassName for Grafana Ingress.
     ## Should be provided if Ingress is enable.
     ##
-    # ingressClassName: nginx
+    ingressClassName: nginx
 
     ## Annotations for Grafana Ingress
     ##
-    annotations: {}
+    annotations:
+      cert-manager.io/cluster-issuer: "vault-cluster-issuer"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
 
@@ -1050,17 +1054,17 @@ grafana:
     # hosts:
     #   - grafana.domain.com
     hosts:
-    # - grafana.local.lan
+      - grafana-k3s-mgmt.local.lan
     ## Path for grafana ingress
     path: /
 
     ## TLS configuration for grafana Ingress
     ## Secret must be manually created in the namespace
     ##
-    tls: []
-    # - secretName: grafana-general-tls
-    #   hosts:
-    #   - grafana.example.com
+    tls:
+      - secretName: grafana-tls
+        hosts:
+        - grafana-k3s-mgmt.local.lan
 
     # # To make Grafana persistent (Using Statefulset)
     # #
@@ -3031,7 +3035,7 @@ prometheus:
   ## Note many of features described below (e.g. rules, query, alerting, remote read, thanos) will not work in agent mode.
   ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/designs/prometheus-agent.md
   ##
-  agentMode: true
+  agentMode: false
 
   ## Annotations for Prometheus
   ##
@@ -3343,7 +3347,9 @@ prometheus:
     # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
     ingressClassName: nginx
 
-    annotations: {}
+    annotations:
+      cert-manager.io/cluster-issuer: "vault-cluster-issuer"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     labels: {}
 
     ## Redirect ingress to an additional defined port on the service
@@ -3358,8 +3364,8 @@ prometheus:
     - prometheus-k3s-mgmt.local.lan
     ## Paths to use for ingress rules - one path should match the prometheusSpec.routePrefix
     ##
-    paths: []
-    # - /
+    paths:
+    - /
 
     ## For Kubernetes >= 1.18 you should specify the pathType (determines how Ingress paths should be matched)
     ## See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#better-path-matching-with-path-types
@@ -3368,10 +3374,10 @@ prometheus:
     ## TLS configuration for Prometheus Ingress
     ## Secret must be manually created in the namespace
     ##
-    tls: []
-      # - secretName: prometheus-general-tls
-      #   hosts:
-      #     - prometheus.example.com
+    tls:
+      - secretName: prometheus-tls
+        hosts:
+          - prometheus-k3s-mgmt.local.lan
 
   # -- BETA: Configure the gateway routes for the chart here.
   # More routes can be added by adding a dictionary key like the 'main' route.
@@ -3852,7 +3858,7 @@ prometheus:
     ## Number of replicas of each shard to deploy for a Prometheus deployment.
     ## Number of replicas multiplied by shards is the total number of Pods created.
     ##
-    replicas: 2
+    replicas: 1
 
     ## EXPERIMENTAL: Number of shards to distribute targets onto.
     ## Number of replicas multiplied by shards is the total number of Pods created.
@@ -3918,8 +3924,8 @@ prometheus:
 
     ## The remote_write spec configuration for Prometheus.
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#remotewritespec
-    remoteWrite:
-    - url: http://prom.local.lan:9090/api/v1/write
+    remoteWrite: []
+    # - url: http://prom.local.lan:9090/api/v1/write
     ## additionalRemoteWrite is appended to remoteWrite
     additionalRemoteWrite: []
 
@@ -3943,7 +3949,7 @@ prometheus:
       #
       volumeClaimTemplate:
         spec:
-          storageClassName: local-path
+          storageClassName: vsphere-csi
           accessModes: [ "ReadWriteOnce" ]
           resources:
             requests:
