@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: alertmanager-tls
+  namespace: monitoring
+spec:
+  secretName: alertmanager-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: vault-issuer
+  commonName: alertmanager-k3s-mgmt.local.lan
+  dnsNames:
+  - alertmanager-k3s-mgmt.local.lan
+  duration: 8760h
+  renewBefore: 4380h
