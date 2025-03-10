@@ -4,7 +4,7 @@ metadata:
   name: argocd-server
   namespace: argocd
   annotations:
-    cert-manager.io/cluster-issuer: "vault-cluster-issuer"
+    cert-manager.io/cluster-issuer: "vault-issuer"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   rules:
