@@ -13,13 +13,13 @@ spec:
   data:
   - secretKey: tls.key
     remoteRef:
-      key: vault/k3s-mgmt/
+      key: vault/k3s-mgmt
       property: vault_key
   - secretKey: tls.crt
     remoteRef:
-      key: vault/k3s-mgmt/
+      key: vault/k3s-mgmt
       property: vault_crt
   - secretKey: ca.crt
     remoteRef:
-      key: vault/k3s-mgmt/
+      key: vault/k3s-mgmt
       property: vault_ca
