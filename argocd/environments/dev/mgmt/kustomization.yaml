@@ -6,5 +6,5 @@ resources:
 - cert-manager.yaml
 - argocd.yaml
 # - vault.yaml
-# - ingress-nginx.yaml
+- ingress-nginx.yaml
 # - external-dns.yaml
