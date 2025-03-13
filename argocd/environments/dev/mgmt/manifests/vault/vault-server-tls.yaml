@@ -1,7 +1,7 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: vault-server-tls
+  name: es-vault-server-tls
   namespace: vault
 spec:
   refreshInterval: "15s"

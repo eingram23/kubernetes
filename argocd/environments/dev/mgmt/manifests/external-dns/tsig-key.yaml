@@ -1,7 +1,7 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: tsig-key
+  name: es-tsig-key
   namespace: external-dns
 spec:
   refreshInterval: "15s"
