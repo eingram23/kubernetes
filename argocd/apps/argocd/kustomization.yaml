@@ -14,11 +14,13 @@ resources:
 # - cmp-plugin.yaml
 # - argocd-vault-plugin-credentials.yaml
 
-# configMapGenerator:
-# - name: argocd-cmd-params-cm
-#   behavior: merge
-#   literals:
-#   - server.insecure=true
+configMapGenerator:
+- name: argocd-cmd-params-cm
+  behavior: merge
+  literals:
+  - server.insecure=true
 
 patches:
 # - path: argocd-repo-server.yaml
+- argocd-rbac-cm-patch.yaml
+- argocd-cm-patch.yaml

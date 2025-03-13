@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  url: https://argocd-k3s-mgmt.local.lan
+  dex.config: |
+    logger:
+      level: debug
+      format: json
+    connectors:
+    - type: saml
+      id: saml
+      name: saml
+      config:
+        entityIssuer: https://argocd-k3s-mgmt.local.lan/api/dex/callback
+        ssoURL: https://login.microsoftonline.com/4229484c-73ef-4252-8671-d052d504e4ec/saml2
+        caData: |
+           LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlDOERDQ0FkaWdBd0lCQWdJUVU3NUxrcFdnTElaSFhhbXhubHBlRkRBTkJna3Foa2lHOXcwQkFRc0ZBREEwTVRJd01BWURWUVFEDQpFeWxOYVdOeWIzTnZablFnUVhwMWNtVWdSbVZrWlhKaGRHVmtJRk5UVHlCRFpYSjBhV1pwWTJGMFpUQWVGdzB5TlRBek1USXdNekV5DQpNRFJhRncweU9EQXpNVEl3TkRFeU1EUmFNRFF4TWpBd0JnTlZCQU1US1UxcFkzSnZjMjltZENCQmVuVnlaU0JHWldSbGNtRjBaV1FnDQpVMU5QSUVObGNuUnBabWxqWVhSbE1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBc29Ea1BSSFRvWlR1DQpiREVYQkZaZWt6MmU4YTNKYWpGc1MvZ21wMWtNckNGanN3d0duYmdVaEVaWG83RGhQWU9qKzAzT0JId0RwZ1phWENxSkJHWUF1NmRTDQpyN29kVTRvaWNVZUZXWnpaclVVaFM5ZE4rckFtTHBoeUlOZ1BwZ0tHVE1mcTdzWjNJUEg5WWdvRllvOGVaY1RKa2RkTUMzSTRuNkFWDQoyK1pmdHpCdjlKbzVaWnhyRUQrdjFoeVRBY2tMcEVXNHRiT0FORWtBZmFnOHJQVjZneE1LSUxsdzJiVXBCZzBBN2diZytpajA3TlhpDQp0RWV2bkxORndEK3dSR0diemQ0RWZuM1h2eStlVjlVZFNvak1mU2UzZFRRdHBHZ09aS0tZSGpxdzJWVjhyamx6T3kwTHA5UjZGUEh2DQp5Y25mSi9sb1VKY3NFMVFlV09ibkZGdExZUUlEQVFBQk1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQWhmdXlQVjhTZlgwVSsxb09XDQpsOXZycEFvWDhPUVBVNDF6elBNeEtRU2l2QUJGS1A4YUdwUXp4S3Y5bEgvUW5QaDBzV2dxTXZ6ZENCWUhNQ0t1dUNUNFRQaTBFZkFEDQpUbjZ4dzlLMDhHYTI4R05VT2VuT2VGcWV5bktJa0U1RFQ4V1dnSWs0VVZySFg2ZDg5Q0hDdndON0xudmlURGhsemJWNnJpUW5TQVRaDQphQVZ6QXFTUUZma0htNzBjYUhRbHY1SElLMjNjZ201dW5mbDk2RW1qdU8raWZ5YXFNR29wYW5MQklXZjM2OGpKbXBsMCtXc2drdVloDQpBQlMrVW5WeDVmbU1uak05dnNib0MrT0I4SFlRWS9WOEg0ZlNoMnNkbFRRWVZKREJRSi9aQTlpVU9KWWl0VTFoWU5PUHYwaXZEaS9vDQpPUVdrQkpwRnVONXRCTlozU0c1Sw0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQ0K
+        redirectURI: https://argocd-k3s-mgmt.local.lan/api/dex/callback
+        usernameAttr: email
+        emailAttr: email
