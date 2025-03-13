@@ -8,6 +8,7 @@ images:
 namespace: argocd
 
 resources:
+- namespace.yaml
 - argocd-install.yaml
 # - argocd-secret.yaml
 # - argocd-repo-server-rbac.yaml
