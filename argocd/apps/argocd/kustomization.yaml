@@ -10,6 +10,8 @@ namespace: argocd
 resources:
 - argocd-install.yaml
 - argocd-secret.yaml
+- argocd-rbac-cm.yaml
+- argocd-cm.yaml
 # - argocd-repo-server-rbac.yaml
 # - cmp-plugin.yaml
 # - argocd-vault-plugin-credentials.yaml
@@ -22,5 +24,4 @@ configMapGenerator:
 
 patches:
 # - path: argocd-repo-server.yaml
-- argocd-rbac-cm-patch.yaml
-- argocd-cm-patch.yaml
+
