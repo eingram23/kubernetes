@@ -24,9 +24,9 @@ spec:
     targetRevision: main
     path: argocd/environments/dev/mgmt/manifests/kube-prometheus-stack
   syncPolicy:
-    # automated:
-    #   prune: true
-    #   selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
     - ServerSideApply=true
