@@ -8,3 +8,4 @@ resources:
 - vault.yaml
 - ingress-nginx.yaml
 - external-dns.yaml
+- rancher.yaml
