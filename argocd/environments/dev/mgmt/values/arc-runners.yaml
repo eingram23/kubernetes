@@ -213,7 +213,7 @@ template:
 ## to help it finish RoleBinding with the right service account.
 ## Note: if your controller is installed to only watch a single namespace, you have to pass these values explicitly.
 controllerServiceAccount:
-  namespace: arc-system
+  namespace: arc-systems
   name: arc-gha-rs-controller
 
 ## Optional annotations and labels applied to all resources created by helm installation
