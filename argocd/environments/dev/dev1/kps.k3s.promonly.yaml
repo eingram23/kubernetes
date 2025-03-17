@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3"
+spec:
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    path: argocd/apps/kube-prometheus-stack/
+    helm:
+      valueFiles:
+      - $values/argocd/environments/dev/dev1/values/kps.k3s.promonly.yaml
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    ref: values
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    path: argocd/environments/dev/dev1/manifests/kube-prometheus-stack
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
+    - ApplyOutOfSyncOnly=true
