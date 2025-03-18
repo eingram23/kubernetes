@@ -4,9 +4,6 @@ kind: Kustomization
 resources:
 - kps.k3s.promonly.yaml
 - cert-manager.yaml
-- argocd.yaml
-- vault.yaml
 - ingress-nginx.yaml
 - external-dns.yaml
-- arc.yaml
-- arc-runners.yaml
+
