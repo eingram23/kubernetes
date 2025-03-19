@@ -11,7 +11,7 @@ spec:
     path: argocd/environments/dev/rancher
   destination:
     namespace: argocd
-    server: 'https://kubernetes.default.svc'
+    server: 'https://k3s-rancher-cp1.local.lan:6443'
   syncPolicy:
     automated:
       prune: true
