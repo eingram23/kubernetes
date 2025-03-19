@@ -10,6 +10,7 @@ spec:
     targetRevision: main
     path: argocd/apps/external-dns
     helm:
+      releaseName: external-dns
       valueFiles:
       - $values/argocd/environments/dev/rancher/values/external-dns.yaml
   - repoURL: https://github.com/eingram23/kubernetes.git

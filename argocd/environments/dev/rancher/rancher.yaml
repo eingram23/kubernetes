@@ -10,6 +10,7 @@ spec:
     targetRevision: main
     path: argocd/apps/rancher
     helm:
+      releaseName: rancher
       parameters:
       - name: hostname
         value: rancher-k3s-rancher.local.lan

@@ -12,6 +12,7 @@ spec:
     targetRevision: main
     path: argocd/apps/kube-prometheus-stack/
     helm:
+      releaseName: kube-prometheus-stack
       valueFiles:
       - $values/argocd/environments/dev/rancher/values/kps.k3s.promonly.yaml
   - repoURL: https://github.com/eingram23/kubernetes.git

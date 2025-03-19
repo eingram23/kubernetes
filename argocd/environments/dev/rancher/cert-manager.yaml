@@ -12,6 +12,7 @@ spec:
     targetRevision: main
     path: argocd/apps/cert-manager
     helm:
+      releaseName: cert-manager
       valueFiles:
       - $values/argocd/environments/dev/rancher/values/cert-manager.yaml
   - repoURL: https://github.com/eingram23/kubernetes.git
