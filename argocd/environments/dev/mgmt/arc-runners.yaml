@@ -10,6 +10,7 @@ spec:
     targetRevision: 0.10.1
     chart: gha-runner-scale-set
     helm:
+      releaseName: arc-runners
       valueFiles:
       - $values/argocd/environments/dev/mgmt/values/arc-runners.yaml
   - repoURL: https://github.com/eingram23/kubernetes.git
