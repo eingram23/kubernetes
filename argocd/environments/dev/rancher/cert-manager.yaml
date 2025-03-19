@@ -1,32 +1,31 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: rancher
+  name: cert-manager
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   project: default
   sources:
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/apps/rancher
+    path: argocd/apps/cert-manager
     helm:
-      parameters:
-      - name: hostname
-        value: rancher-k3s-rancher.local.lan
       valueFiles:
-      - $values/argocd/environments/dev/rancher/values/rancher.yaml
+      - $values/argocd/environments/dev/rancher/values/cert-manager.yaml
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     ref: values
-  # - repoURL: https://github.com/eingram23/kubernetes.git
-  #   targetRevision: main
-  #   path: argocd/environments/dev/rancher/manifests/rancher
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    path: argocd/environments/dev/rancher/manifests/cert-manager
   destination:
-    namespace: rancher
+    namespace: cert-manager
     server: https://k3s-rancher-cp1.local.lan:6443
   syncPolicy:
-    # automated:
-    #   prune: true
-    #   selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true

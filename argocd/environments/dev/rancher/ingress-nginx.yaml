@@ -1,32 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: rancher
+  name: ingress-nginx
   namespace: argocd
 spec:
   project: default
   sources:
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/apps/rancher
+    path: argocd/apps/ingress-nginx
     helm:
-      parameters:
-      - name: hostname
-        value: rancher-k3s-rancher.local.lan
       valueFiles:
-      - $values/argocd/environments/dev/rancher/values/rancher.yaml
+      - $values/argocd/environments/dev/rancher/values/ingress-nginx.yaml
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     ref: values
-  # - repoURL: https://github.com/eingram23/kubernetes.git
-  #   targetRevision: main
-  #   path: argocd/environments/dev/rancher/manifests/rancher
   destination:
-    namespace: rancher
+    namespace: ingress-nginx
     server: https://k3s-rancher-cp1.local.lan:6443
   syncPolicy:
-    # automated:
-    #   prune: true
-    #   selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
