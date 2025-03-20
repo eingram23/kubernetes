@@ -63,7 +63,12 @@ ingress:
   # options: true, false
   enabled: true
   includeDefaultExtraAnnotations: true
-  extraAnnotations: {}
+  extraAnnotations:
+    cert-manager.io/cluster-issuer: "vault-issuer"
+    # Additional Trusted CAs.
+    # Enable this flag and add your CA certs as a secret named tls-ca-additional in the namespace.
+    # See README.md for details.
+    # additionalTrustedCAs: false
   ingressClassName: "nginx"
   # Certain ingress controllers will require the pathType or path to be set to a different value.
   pathType: ImplementationSpecific
