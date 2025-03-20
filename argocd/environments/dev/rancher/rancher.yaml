@@ -26,8 +26,8 @@ spec:
     namespace: rancher
     server: https://k3s-rancher-cp1.local.lan:6443
   syncPolicy:
-    # automated:
-    #   prune: true
-    #   selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
