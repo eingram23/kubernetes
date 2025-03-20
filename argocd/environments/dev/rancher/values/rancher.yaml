@@ -77,7 +77,7 @@ ingress:
 
   tls:
     # options: rancher, letsEncrypt, secret
-    source: rancher
+    source: secret
     secretName: tls-rancher-ingress
 
 ### service ###
