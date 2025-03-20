@@ -13,7 +13,7 @@ spec:
       releaseName: rancher
       parameters:
       - name: hostname
-        value: rancher-k3s-rancher.local.lan
+        value: rancher.local.lan
       valueFiles:
       - $values/argocd/environments/dev/rancher/values/rancher.yaml
   - repoURL: https://github.com/eingram23/kubernetes.git

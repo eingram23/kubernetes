@@ -174,7 +174,7 @@ postDelete:
   ignoreTimeoutError: false
 
 # Set a bootstrap password. If leave empty, a random password will be generated.
-bootstrapPassword: ""
+bootstrapPassword: "temppassword"
 
 startupProbe:
   ## should be ready within 2 minutes
