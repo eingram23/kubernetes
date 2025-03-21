@@ -12,6 +12,8 @@ spec:
     helm:
       releaseName: rancher
       parameters:
+      - name: privateCA
+        value: "true"
       - name: hostname
         value: rancher.local.lan
       valueFiles:
