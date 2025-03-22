@@ -25,7 +25,7 @@ spec:
   #   targetRevision: main
   #   path: argocd/environments/dev/rancher/manifests/rancher
   destination:
-    namespace: rancher
+    namespace: cattle-system
     server: https://k3s-rancher-cp1.local.lan:6443
   syncPolicy:
     automated:
