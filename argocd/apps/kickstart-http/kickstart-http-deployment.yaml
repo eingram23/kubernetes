@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kickstart-http
+  namespace: kickstart-http
+  labels:
+    app: kickstart-http
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kickstart-http
+  template:
+    metadata:
+      labels:
+        app: kickstart-http
+    spec:
+      containers:
+      - image: docker.io/nginx:1.27.4
+        name: nginx
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        volumeMounts:
+        - name: kickstart-config
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: kickstart-config
+        configMap:
+          name: rocky9-kickstart-config
