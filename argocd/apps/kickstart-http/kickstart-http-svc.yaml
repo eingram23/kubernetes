@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kickstart-http
+  namespace: kickstart-http
+  labels:
+    app: kickstart-http
+spec:
+  selector:
+    app: kickstart-http
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  type: ClusterIP
