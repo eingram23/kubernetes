@@ -16,7 +16,7 @@ spec:
         app: kickstart-http
     spec:
       containers:
-      - image: docker.io/nginx:1.27.4
+      - image: docker.io/nginx:1.27.4-alpine
         name: nginx
         ports:
         - containerPort: 80
