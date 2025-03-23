@@ -5,12 +5,12 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  sources:
-  - repoURL: https://github.com/eingram23/kubernetes.git
+  source:
+    repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     path: argocd/apps/kickstart-http
   destination:
-    namespace: kickstart-https
+    namespace: kickstart-http
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
