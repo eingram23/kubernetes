@@ -55,7 +55,7 @@ data:
     timezone America/Los_Angeles --isUtc --ntpservers=2.pool.ntp.org,2.pool.ntp.org,2.pool.ntp.org,2.pool.ntp.org
 
     # Root password
-    rootpw --iscrypted --allow-ssh ${password}
+    rootpw --iscrypted --allow-ssh temppassword
 
     # Reboot after installation
     reboot
