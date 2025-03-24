@@ -27,4 +27,4 @@ spec:
       volumes:
       - name: kickstart-config
         configMap:
-          name: rocky9-kickstart-config
+          name: kickstart-config

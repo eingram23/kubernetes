@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kickstart-config
+  namespace: kickstart-http
+  labels:
+    app: kickstart-http
+data:
+  ks-rocky9-rke.cfg: |
+    # version=RHEL9
+    # Use graphical install
+    graphical
+
+    repo --name="AppStream" --baseurl=file:///run/install/sources/mount-0000-cdrom/AppStream
+
+    %addon com_redhat_kdump --enable --reserve-mb='auto'
+
+    %end
+
+    %packages
+    @^minimal-environment
+
+    %end
+
+    # Keyboard layouts
+    keyboard --xlayouts='us'
+    # System language
+    lang en_US.UTF-8
+
+    # Network information
+    network  --bootproto=dhcp --device=ens192 --ipv6=auto --activate
+    network  --hostname=rocky-temp.local
+
+    # Use CDROM installation media
+    cdrom
+
+    # Run the Setup Agent on first boot
+    firstboot --enable
+
+    ignoredisk --only-use=sda
+    # System bootloader configuration
+    bootloader --append="crashkernel=auto" --location=mbr --boot-drive=sda
+    # Partition clearing information
+    clearpart --none --initlabel
+    # Disk partitioning information
+    part /boot --fstype="xfs" --ondisk=sda --size=1024
+    part pv.213 --fstype="lvmpv" --ondisk=sda --size=59768
+    part /boot/efi --fstype="efi" --ondisk=sda --size=600 --fsoptions="umask=0077,shortname=winnt"
+    volgroup rl --pesize=4096 pv.213
+    logvol /home --fstype="xfs" --size=10240 --name=home --vgname=rl
+    logvol / --fstype="xfs" --size=47104 --name=root --vgname=rl
+    logvol swap --fstype="swap" --size=2412 --name=swap --vgname=rl
+
+    # System timezone
+    timezone America/Los_Angeles --isUtc --ntpservers=2.pool.ntp.org,2.pool.ntp.org,2.pool.ntp.org,2.pool.ntp.org
+
+    # Root password
+    rootpw --iscrypted --allow-ssh ${password}
+
+    # Reboot after installation
+    reboot
