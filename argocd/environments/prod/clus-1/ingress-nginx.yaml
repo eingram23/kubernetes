@@ -18,7 +18,7 @@ spec:
     ref: values
   destination:
     namespace: ingress-nginx
-    server: ttps://rancher.local.lan/k8s/clusters/c-m-twrrzfwf
+    server: https://rancher.local.lan/k8s/clusters/c-m-twrrzfwf
   syncPolicy:
     automated:
       prune: true

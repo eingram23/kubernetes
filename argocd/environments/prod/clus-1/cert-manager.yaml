@@ -23,7 +23,7 @@ spec:
     path: argocd/environments/prod/clus-1/manifests/cert-manager
   destination:
     namespace: cert-manager
-    server: ttps://rancher.local.lan/k8s/clusters/c-m-twrrzfwf
+    server: https://rancher.local.lan/k8s/clusters/c-m-twrrzfwf
   syncPolicy:
     automated:
       prune: true
