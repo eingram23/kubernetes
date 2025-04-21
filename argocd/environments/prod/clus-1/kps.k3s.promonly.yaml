@@ -14,13 +14,13 @@ spec:
     helm:
       releaseName: kube-prometheus-stack
       valueFiles:
-      - $values/argocd/environments/dev/clus-1/values/kps.k3s.promonly.yaml
+      - $values/argocd/environments/prod/clus-1/values/kps.k3s.promonly.yaml
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     ref: values
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/environments/dev/clus-1/manifests/kube-prometheus-stack
+    path: argocd/environments/prod/clus-1/manifests/kube-prometheus-stack
   destination:
     namespace: monitoring
     server: https://rancher.local.lan/k8s/clusters/c-m-twrrzfwf
