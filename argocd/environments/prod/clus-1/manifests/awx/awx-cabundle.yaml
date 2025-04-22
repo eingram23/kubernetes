@@ -1,0 +1,17 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: es-awx-cabundle
+  namespace: awx
+spec:
+  refreshInterval: "15s"
+  secretStoreRef:
+    name: vault-backend
+    kind: ClusterSecretStore
+  target:
+    name: homelab-bundleca
+  stringData:
+  - secretKey: bundle-ca.crt
+    remoteRef:
+      key: cert/rootca
+      property: crt
