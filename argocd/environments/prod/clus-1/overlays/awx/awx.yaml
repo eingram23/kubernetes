@@ -39,6 +39,7 @@ spec:
   # ee_extra_env: |
   #   - name: RECEPTOR_KUBE_SUPPORT_RECONNECT
   #     value: disabled
+  replicas: 1
   ingress_type: ingress
   ingress_class_name: nginx
   ingress_hosts:
