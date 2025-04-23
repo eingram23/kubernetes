@@ -41,6 +41,7 @@ spec:
   #     value: disabled
   ingress_type: ingress
   ingress_controller: nginx
+  ingress_class_name: nginx
   ingress_hosts:
     - hostname: awx.local.lan
       tls_secret: awx-tls
