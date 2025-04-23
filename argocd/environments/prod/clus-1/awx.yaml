@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/apps/awx/kustomize
+    path: argocd/environments/prod/clus-1/overlays/awx
   destination:
     namespace: awx
     server: https://rancher.local.lan/k8s/clusters/c-m-twrrzfwf

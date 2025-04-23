@@ -1,7 +1,7 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: es-awx-admin-password
+  name: es-awx-cabundle
   namespace: awx
 spec:
   refreshInterval: "15s"
@@ -9,9 +9,9 @@ spec:
     name: vault-backend
     kind: ClusterSecretStore
   target:
-    name: awx-admin-password
-  stringData:
-  - secretKey: password
+    name: homelab-bundleca
+  data:
+  - secretKey: bundle-ca.crt
     remoteRef:
-      key: ssh/ansible
-      property: ssh_password
+      key: cert/rootca
+      property: crt
