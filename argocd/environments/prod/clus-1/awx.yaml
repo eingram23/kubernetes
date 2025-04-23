@@ -13,5 +13,8 @@ spec:
     namespace: awx
     server: https://rancher.local.lan/k8s/clusters/c-m-twrrzfwf
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
