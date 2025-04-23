@@ -40,7 +40,6 @@ spec:
   #   - name: RECEPTOR_KUBE_SUPPORT_RECONNECT
   #     value: disabled
   ingress_type: ingress
-  ingress_controller: nginx
   ingress_class_name: nginx
   ingress_hosts:
     - hostname: awx.local.lan
