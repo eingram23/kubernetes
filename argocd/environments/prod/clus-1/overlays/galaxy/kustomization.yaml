@@ -5,3 +5,6 @@ namespace: galaxy
 
 resources:
 - https://github.com/eingram23/kubernetes.git/argocd/apps/galaxy-operator?ref=main
+- galaxy-admin-password.yaml
+- galaxy-postgres-configuration-secret.yaml
+- galaxy-cr.yaml
