@@ -12,11 +12,11 @@ spec:
   postgres_configuration_secret: "postgres-configuration-secret"
   # signing_secret: "signing-galaxy"
   # signing_scripts_configmap: "signing-scripts"
-  # hostname: galaxy.local.lan
+  hostname: galaxy.local.lan
   ingress_type: ingress
   ingress_class_name: nginx
   ingress_hosts:
-    - hostname: awx.local.lan
+    - hostname: galaxy.local.lan
       tls_secret: awx-tls
   ingress_annotations: |
     cert-manager.io/cluster-issuer: "vault-issuer"
