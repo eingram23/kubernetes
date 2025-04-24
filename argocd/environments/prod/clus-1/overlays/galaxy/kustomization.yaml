@@ -9,5 +9,5 @@ resources:
 - galaxy-postgres-configuration-secret.yaml
 - galaxy-cr.yaml
 
-patchesStrategicMerge:
+patches:
 - galaxy-file-storage-pvc.yaml
