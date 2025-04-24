@@ -10,4 +10,9 @@ resources:
 - galaxy-cr.yaml
 
 patches:
-- galaxy-file-storage-pvc.yaml
+- target:
+    group: storage.k8s.io
+    version: v1
+    kind: storageClass
+    name: galaxy-file-storage
+  path: galaxy-file-storage-pvc.yaml
