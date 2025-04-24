@@ -9,10 +9,3 @@ resources:
 - galaxy-postgres-configuration-secret.yaml
 - galaxy-cr.yaml
 
-patches:
-- target:
-    group: storage.k8s.io
-    version: v1
-    kind: storageClass
-    name: galaxy-file-storage
-  path: galaxy-file-storage-pvc.yaml
