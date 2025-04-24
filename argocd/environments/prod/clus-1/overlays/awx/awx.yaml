@@ -40,7 +40,7 @@ spec:
   #   - name: RECEPTOR_KUBE_SUPPORT_RECONNECT
   #     value: disabled
   web_replicas: 1
-  task_replicas: 2
+  task_replicas: 1
   ingress_type: ingress
   ingress_class_name: nginx
   ingress_hosts:
