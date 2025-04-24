@@ -24,7 +24,7 @@ spec:
   nginx_client_max_body_size: 100m
   storage_type: File
   ingress_tls_secret: tls-galaxy-ingress
-  file_storage_access_mode: ReadWriteMany
+  # file_storage_access_mode: ReadWriteMany
   file_storage_size: 20Gi
   # pulp_settings:
   #   allowed_export_paths:
