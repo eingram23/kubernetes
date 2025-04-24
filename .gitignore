@@ -49,3 +49,5 @@ ehthumbs_vista.db
 $RECYCLE.BIN/
 
 /test
+/.ansible
+/.vscode
