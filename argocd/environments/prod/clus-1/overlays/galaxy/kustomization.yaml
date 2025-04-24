@@ -8,3 +8,6 @@ resources:
 - galaxy-admin-password.yaml
 - galaxy-postgres-configuration-secret.yaml
 - galaxy-cr.yaml
+
+patchesStrategicMerge:
+- galaxy-file-storage-pvc.yaml
