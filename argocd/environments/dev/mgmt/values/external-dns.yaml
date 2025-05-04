@@ -695,19 +695,19 @@ rfc2136:
   zones: []
   ## @param rfc2136.tsigSecret When using the rfc2136 provider, specify the tsig secret to enable security. (do not specify if `rfc2136.secretName` is provided.) (optional)
   ##
-  tsigSecret: ""
+  # tsigSecret: ""
   ## @param rfc2136.secretName When using the rfc2136 provider, specify the existing secret which contains your tsig secret in the key "rfc2136_tsig_secret". Disables the usage of `rfc2136.tsigSecret` (optional)
   ##
-  secretName: "tsig-key"
+  # secretName: "tsig-key"
   ## @param rfc2136.tsigSecretAlg When using the rfc2136 provider, specify the tsig secret to enable security (optional)
   ##
-  tsigSecretAlg: "hmac-sha256"
+  # tsigSecretAlg: "hmac-sha256"
   ## @param rfc2136.tsigKeyname When using the rfc2136 provider, specify the tsig keyname to enable security (optional)
   ##
-  tsigKeyname: "external-dns"
+  # tsigKeyname: "external-dns"
   ## @param rfc2136.tsigAxfr When using the rfc2136 provider, enable AFXR to enable security (optional)
   ##
-  tsigAxfr: true
+  # tsigAxfr: true
   ## @param rfc2136.minTTL When using the rfc2136 provider, specify minimal TTL (in duration format) for records[ns, us, ms, s, m, h], see more <https://golang.org/pkg/time/#ParseDuration>
   ##
   minTTL: "60s"
