@@ -695,16 +695,17 @@ rfc2136:
   zones: []
   ## @param rfc2136.tsigSecret When using the rfc2136 provider, specify the tsig secret to enable security. (do not specify if `rfc2136.secretName` is provided.) (optional)
   ##
+  insecure: true
   tsigSecret: ""
   ## @param rfc2136.secretName When using the rfc2136 provider, specify the existing secret which contains your tsig secret in the key "rfc2136_tsig_secret". Disables the usage of `rfc2136.tsigSecret` (optional)
   ##
-  secretName: "tsig-key"
+  secretName: ""
   ## @param rfc2136.tsigSecretAlg When using the rfc2136 provider, specify the tsig secret to enable security (optional)
   ##
-  tsigSecretAlg: "hmac-sha256"
+  tsigSecretAlg: ""
   ## @param rfc2136.tsigKeyname When using the rfc2136 provider, specify the tsig keyname to enable security (optional)
   ##
-  tsigKeyname: "external-dns"
+  tsigKeyname: ""
   ## @param rfc2136.tsigAxfr When using the rfc2136 provider, enable AFXR to enable security (optional)
   ##
   tsigAxfr: true
