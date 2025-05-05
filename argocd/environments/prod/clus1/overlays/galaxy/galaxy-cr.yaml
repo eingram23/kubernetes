@@ -39,8 +39,8 @@ spec:
         cpu: 150m
         memory: 256Mi
       limits:
-        cpu: 800m
-        memory: 1Gi
+        cpu: 250m
+        memory: 500Mi
   worker:
     replicas: 1
     resource_requirements:
@@ -48,8 +48,8 @@ spec:
         cpu: 150m
         memory: 256Mi
       limits:
-        cpu: 800m
-        memory: 1Gi
+        cpu: 250m
+        memory: 500Mi
   web:
     replicas: 1
     resource_requirements:
@@ -57,5 +57,5 @@ spec:
         cpu: 100m
         memory: 256Mi
       limits:
-        cpu: 800m
-        memory: 1Gi
+        cpu: 250m
+        memory: 500Mi
