@@ -10,7 +10,7 @@ spec:
     auth:
       appRole:
         path: approle
-        roleId: "9de68761-227a-a95a-9141-89fc6cee5086"
+        roleId: "6bdd99fc-3e4f-0d88-2e51-feb8ebb23dcd"
         secretRef:
           name: cert-manager-vault-secret
           key: secretId
