@@ -4,8 +4,7 @@ kind: Kustomization
 namespace: galaxy
 
 resources:
-- https://github.com/eingram23/kubernetes.git/argocd/apps/galaxy-operator?ref=main
+- https://github.com/eingram23/kubernetes.git/argocd/apps/galaxy?ref=main
 - galaxy-admin-password.yaml
 - galaxy-postgres-configuration-secret.yaml
 - galaxy-cr.yaml
-
