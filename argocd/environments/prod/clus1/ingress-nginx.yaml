@@ -1,27 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-dns-clus-1
+  name: ingress-nginx-clus1
   namespace: argocd
 spec:
   project: default
   sources:
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/apps/external-dns
-    helm:    
-      releaseName: external-dns
+    path: argocd/apps/ingress-nginx
+    helm:
+      releaseName: ingress-nginx
       valueFiles:
-      - $values/argocd/environments/prod/clus-1/values/external-dns.yaml
+      - $values/argocd/environments/prod/clus1/values/ingress-nginx.yaml
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     ref: values
-  - repoURL: https://github.com/eingram23/kubernetes.git
-    targetRevision: main
-    path: argocd/environments/prod/clus-1/manifests/external-dns
   destination:
-    namespace: external-dns
-    server: https://rancher.local.lan/k8s/clusters/c-m-twrrzfwf
+    namespace: ingress-nginx
+    server: https://rancher.local.lan/k8s/clusters/c-m-2bd2wzm5
   syncPolicy:
     automated:
       prune: true

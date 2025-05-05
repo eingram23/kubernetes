@@ -1,29 +1,27 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager-clus-1
+  name: external-dns-clus1
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
 spec:
   project: default
   sources:
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/apps/cert-manager
-    helm:
-      releaseName: cert-manager
+    path: argocd/apps/external-dns
+    helm:    
+      releaseName: external-dns
       valueFiles:
-      - $values/argocd/environments/prod/clus-1/values/cert-manager.yaml
+      - $values/argocd/environments/prod/clus1/values/external-dns.yaml
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     ref: values
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/environments/prod/clus-1/manifests/cert-manager
+    path: argocd/environments/prod/clus1/manifests/external-dns
   destination:
-    namespace: cert-manager
-    server: https://rancher.local.lan/k8s/clusters/c-m-twrrzfwf
+    namespace: external-dns
+    server: https://rancher.local.lan/k8s/clusters/c-m-2bd2wzm5
   syncPolicy:
     automated:
       prune: true

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-prometheus-stack-clus-1
+  name: kube-prometheus-stack-clus1
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "-3"
@@ -14,16 +14,16 @@ spec:
     helm:
       releaseName: kube-prometheus-stack
       valueFiles:
-      - $values/argocd/environments/prod/clus-1/values/kps.k3s.promonly.yaml
+      - $values/argocd/environments/prod/clus1/values/kps.k3s.promonly.yaml
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     ref: values
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/environments/prod/clus-1/manifests/kube-prometheus-stack
+    path: argocd/environments/prod/clus1/manifests/kube-prometheus-stack
   destination:
     namespace: monitoring
-    server: https://rancher.local.lan/k8s/clusters/c-m-twrrzfwf
+    server: https://rancher.local.lan/k8s/clusters/c-m-2bd2wzm5
   syncPolicy:
     automated:
       prune: true

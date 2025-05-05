@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
-    path: argocd/environments/prod/clus-1
+    path: argocd/environments/prod/clus1
   destination:
     namespace: argocd
     server: 'https://kubernetes.default.svc'
