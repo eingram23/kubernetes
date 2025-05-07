@@ -21,7 +21,7 @@ spec:
     path: argocd/environments/prod/clus1/manifests/external-dns
   destination:
     namespace: external-dns
-    server: https://rancher.local.lan/k8s/clusters/c-m-2bd2wzm5
+    server: https://rancher.local.lan/k8s/clusters/c-m-jlpc522k
   syncPolicy:
     automated:
       prune: true
