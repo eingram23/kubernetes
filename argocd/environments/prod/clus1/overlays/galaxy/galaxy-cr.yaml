@@ -10,8 +10,8 @@ spec:
   no_log: false
   admin_password_secret: "galaxy-admin-password"
   postgres_configuration_secret: "postgres-configuration-secret"
-  signing_secret: ""
-  signing_scripts_configmap: ""
+  # signing_secret: ""
+  # signing_scripts_configmap: ""
   hostname: galaxy.local.lan
   ingress_type: ingress
   nginx_client_max_body_size: 100m
