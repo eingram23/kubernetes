@@ -20,6 +20,8 @@ spec:
   file_storage_access_mode: ReadWriteOnce
   file_storage_size: 20Gi
   pulp_settings:
+    GALAXY_FEATURE_FLAGS:
+      execution_environments: true
     allowed_export_paths:
       - /tmp
     allowed_import_paths:
