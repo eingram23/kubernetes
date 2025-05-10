@@ -9,6 +9,6 @@ resources:
 - galaxy-postgres-configuration-secret.yaml
 - galaxy-cr.yaml
 
-patches:
-- path: content-timeout-patch.yaml
-- path: galaxy-ingress-patch.yaml
+# patches:
+# - path: content-timeout-patch.yaml
+# - path: galaxy-ingress-patch.yaml
