@@ -31,11 +31,11 @@ spec:
     replicas: 1
     resource_requirements:
       requests:
-        cpu: 150m
-        memory: 256Mi
-      limits:
-        cpu: 250m
+        cpu: 500m
         memory: 500Mi
+      limits:
+        cpu: 750m
+        memory: 750Mi
   worker:
     replicas: 1
     resource_requirements:
