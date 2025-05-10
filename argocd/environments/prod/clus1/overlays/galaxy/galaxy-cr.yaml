@@ -10,28 +10,21 @@ spec:
   no_log: false
   admin_password_secret: "galaxy-admin-password"
   postgres_configuration_secret: "postgres-configuration-secret"
-  # signing_secret: "signing-galaxy"
-  # signing_scripts_configmap: "signing-scripts"
+  signing_secret: "signing-galaxy"
+  signing_scripts_configmap: "signing-scripts"
   hostname: galaxy.local.lan
   ingress_type: ingress
-  # ingress_class_name: nginx
-  # ingress_hosts:
-  #   - hostname: galaxy.local.lan
-  #     tls_secret: awx-tls
-  # ingress_annotations: |
-  #   cert-manager.io/cluster-issuer: "vault-issuer"
-  #   nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
   nginx_client_max_body_size: 100m
   storage_type: File
   ingress_tls_secret: tls-galaxy-ingress
   file_storage_access_mode: ReadWriteOnce
   file_storage_size: 20Gi
-  # pulp_settings:
-  #   allowed_export_paths:
-  #     - /tmp
-  #   allowed_import_paths:
-  #     - /tmp
-  #   telemetry: false
+  pulp_settings:
+    allowed_export_paths:
+      - /tmp
+    allowed_import_paths:
+      - /tmp
+    telemetry: false
   content:
     replicas: 1
     resource_requirements:
