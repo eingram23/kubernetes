@@ -7,7 +7,5 @@ spec:
     spec:
       containers:
         - name: content
-          livenessProbe:
-            timeoutSeconds: 30
           readinessProbe:
             timeoutSeconds: 30
