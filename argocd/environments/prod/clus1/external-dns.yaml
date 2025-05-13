@@ -16,9 +16,6 @@ spec:
   - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     ref: values
-  - repoURL: https://github.com/eingram23/kubernetes.git
-    targetRevision: main
-    path: argocd/environments/prod/clus1/manifests/external-dns
   destination:
     namespace: external-dns
     server: https://rancher.local.lan/k8s/clusters/c-m-q9x87lmv
