@@ -28,12 +28,12 @@ spec:
   # postgres_extra_args:
   #   - '-c'
   #   - 'max_connections=1000'
-  # image: quay.io/ansible/awx
-  # image_version: latest
-  # image_pull_policy: Always
-  # ee_images:
-  #   - name: awx-ee
-  #     image: quay.io/ansible/awx-ee:latest
+  image: quay.io/ansible/awx
+  image_version: latest
+  image_pull_policy: Always
+  ee_images:
+    - name: awx-ee
+      image: quay.io/ansible/awx-ee:latest
     # - name: homelab-awx-ee-v1
     #   image: gitea{{ suffix }}.ycdisp.net/eingram/homelab-awx-ee-v1
   ee_extra_env: |
