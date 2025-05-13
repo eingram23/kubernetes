@@ -20,7 +20,7 @@ spec:
     targetRevision: main
     path: argocd/environments/prod/clus1/manifests/gitea
   destination:
-    server: https://kubernetes.default.svc
+    server: https://rancher.local.lan/k8s/clusters/c-m-q9x87lmv
     namespace: gitea
   syncPolicy:
     automated:
