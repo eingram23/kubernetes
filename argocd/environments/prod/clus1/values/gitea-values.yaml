@@ -11,7 +11,10 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
-  tls: gitea-tls
+  tls:
+    - secretName: gitea-tls
+      hosts:
+        - gitea.local.lan
 
 memcached:
   enabled: true
