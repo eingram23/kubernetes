@@ -2,19 +2,30 @@ image:
   pullPolicy: IfNotPresent
 
 ingress:
-  enabled: true
-  className: nginx
-  annotations:
-    cert-manager.io/cluster-issuer: vault-issuer
-  hosts:
-    - host: gitea.local.lan
-      paths:
-        - path: /
-          pathType: Prefix
-  tls:
-    - secretName: gitea-tls
-      hosts:
-        - gitea.local.lan
+  enabled: false
+  # className: nginx
+  # annotations:
+  #   cert-manager.io/cluster-issuer: vault-issuer
+  # hosts:
+  #   - host: gitea.local.lan
+  #     paths:
+  #       - path: /
+  #         pathType: Prefix
+  # tls:
+  #   - secretName: gitea-tls
+  #     hosts:
+  #       - gitea.local.lan
+
+service:
+  http:
+    port: 443
+    annotations:
+      metallb.universe.tf/allow-shared-ip: gitea
+    type: LoadBalancer
+  ssh:
+    annotations:
+      metallb.universe.tf/allow-shared-ip: gitea
+    type: LoadBalancer
 
 memcached:
   enabled: true
