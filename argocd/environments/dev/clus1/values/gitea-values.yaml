@@ -1,0 +1,121 @@
+image:
+  pullPolicy: IfNotPresent
+
+ingress:
+  enabled: false
+  # className: nginx
+  # annotations:
+  #   cert-manager.io/cluster-issuer: vault-issuer
+  # hosts:
+  #   - host: gitea.local.lan
+  #     paths:
+  #       - path: /
+  #         pathType: Prefix
+  # tls:
+  #   - secretName: gitea-tls
+  #     hosts:
+  #       - gitea.local.lan
+
+service:
+  http:
+    port: 443
+    annotations:
+      metallb.universe.tf/allow-shared-ip: gitea
+    type: LoadBalancer
+  ssh:
+    annotations:
+      metallb.universe.tf/allow-shared-ip: gitea
+    type: LoadBalancer
+
+memcached:
+  enabled: true
+
+persistence:
+  enabled: true
+  size: 10Gi
+  storageClass: vsphere-csi
+
+resources:
+  requests:
+    memory: 500Mi
+    cpu: 100m
+  # limits:
+  #   memory: 1Gi
+  #   cpu: 1000m
+
+postgresql-ha:
+  enabled: false
+
+postgresql:
+  enabled: true
+  global:
+    postgresql:
+      auth:
+        password: gitea
+        database: gitea
+        username: gitea
+      service:
+        ports:
+          postgresql: 5432
+  primary:
+    persistence:
+      size: 10Gi
+
+gitea:
+  # additionalConfigFromEnvs:
+  #   - name: ENV_TO_INI__DATABASE__PASSWD
+  #     valueFrom:
+  #       secretKeyRef:
+  #         name: gitea-postgres-secret
+  #         key: password
+  config:
+    server:
+      DOMAIN: gitea.local.lan
+      PROTOCOL: https
+      CERT_FILE: /certs/tls.crt
+      KEY_FILE: /certs/tls.key
+    # database:
+    #   DB_TYPE: postgres
+    #   HOST: postgres13.postgres.svc.cluster.local:5432
+    #   NAME: gitea
+    #   USER: gitea
+  admin:
+    username: admin
+    existingSecret: gitea-admin-secret
+    email: "edward.ingram23@gmail.com"
+  metrics:
+    enabled: false
+  #   serviceMonitor:
+  #     enabled: true
+  # config:
+  #   server:
+  #     ENABLE_PPROF: true
+  livenessProbe:
+    tcpSocket:
+      port: http
+    initialDelaySeconds: 200
+    timeoutSeconds: 1
+    periodSeconds: 10
+    successThreshold: 1
+    failureThreshold: 10
+  readinessProbe:
+    tcpSocket:
+      port: http
+    initialDelaySeconds: 5
+    timeoutSeconds: 1
+    periodSeconds: 10
+    successThreshold: 1
+    failureThreshold: 3
+extraVolumes:
+- name: gitea-tls
+  secret:
+    secretName: gitea-tls
+extraVolumeMounts:
+- name: gitea-tls
+  readOnly: true
+  mountPath: /certs
+
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true

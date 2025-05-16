@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx-clus1-dev
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    path: argocd/apps/ingress-nginx
+    helm:
+      releaseName: ingress-nginx
+      valueFiles:
+      - $values/argocd/environments/dev/clus1/values/ingress-nginx.yaml
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    ref: values
+  destination:
+    namespace: ingress-nginx
+    server: https://rancher.local.lan/k8s/clusters/c-m-q9x87lmv
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true

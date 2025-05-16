@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager-clus1-dev
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  project: default
+  sources:
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    path: argocd/apps/cert-manager
+    helm:
+      releaseName: cert-manager
+      valueFiles:
+      - $values/argocd/environments/dev/clus1/values/cert-manager.yaml
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    ref: values
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    path: argocd/environments/dev/clus1/manifests/cert-manager
+  destination:
+    namespace: cert-manager
+    server: https://rancher.local.lan/k8s/clusters/c-m-q9x87lmv
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
