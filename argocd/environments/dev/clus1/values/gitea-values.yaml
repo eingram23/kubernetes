@@ -70,7 +70,7 @@ gitea:
           key: password
   config:
     database:
-      DB_TYPE: postgressql
+      DB_TYPE: postgres
       HOST: homenas.local.lan:5436
       NAME: gitea
       USER: gitea
