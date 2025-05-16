@@ -75,7 +75,7 @@ gitea:
       NAME: gitea
       USER: gitea
       # PASSWD: gitea
-      # SCHEMA: gitea
+      SCHEMA: public
     server:
       DOMAIN: gitea.local.lan
       PROTOCOL: https
