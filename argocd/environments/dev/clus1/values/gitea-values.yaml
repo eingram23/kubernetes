@@ -71,7 +71,7 @@ gitea:
   config:
     database:
       DB_TYPE: postgresql
-      HOST: homenas.local.lan:5435
+      HOST: homenas.local.lan:5436
       NAME: gitea
       USER: gitea
       # PASSWD: gitea
