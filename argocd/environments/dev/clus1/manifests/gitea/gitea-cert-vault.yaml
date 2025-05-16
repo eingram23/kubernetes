@@ -8,8 +8,8 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: vault-issuer
-  commonName: gitea.local.lan
+  commonName: gitea-dev.local.lan
   dnsNames:
-  - gitea.local.lan
+  - gitea-dev.local.lan
   duration: 8760h
   renewBefore: 4380h

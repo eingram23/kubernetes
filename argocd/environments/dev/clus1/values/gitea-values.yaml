@@ -77,7 +77,7 @@ gitea:
       # PASSWD: gitea
       SCHEMA: public
     server:
-      DOMAIN: gitea.local.lan
+      DOMAIN: gitea-dev.local.lan
       PROTOCOL: https
       CERT_FILE: /certs/tls.crt
       KEY_FILE: /certs/tls.key
