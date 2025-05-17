@@ -21,6 +21,7 @@ service:
     port: 443
     annotations:
       metallb.universe.tf/allow-shared-ip: gitea
+      external-dns.alpha.kubernetes.io/hostname: gitea.local.lan
     type: LoadBalancer
   ssh:
     annotations:
@@ -47,28 +48,35 @@ postgresql-ha:
   enabled: false
 
 postgresql:
-  enabled: true
-  global:
-    postgresql:
-      auth:
-        password: gitea
-        database: gitea
-        username: gitea
-      service:
-        ports:
-          postgresql: 5432
-  primary:
-    persistence:
-      size: 10Gi
+  enabled: false
+  # global:
+  #   postgresql:
+  #     auth:
+  #       password: gitea
+  #       database: gitea
+  #       username: gitea
+  #     service:
+  #       ports:
+  #         postgresql: 5432
+  # primary:
+  #   persistence:
+  #     size: 10Gi
 
 gitea:
-  # additionalConfigFromEnvs:
-  #   - name: ENV_TO_INI__DATABASE__PASSWD
-  #     valueFrom:
-  #       secretKeyRef:
-  #         name: gitea-postgres-secret
-  #         key: password
+  additionalConfigFromEnvs:
+    - name: GITEA__DATABASE__PASSWD
+      valueFrom:
+        secretKeyRef:
+          name: gitea-postgres-secret
+          key: password
   config:
+    database:
+      DB_TYPE: postgres
+      HOST: homenas.local.lan:5434
+      NAME: gitea
+      USER: gitea
+      # PASSWD: gitea
+      SCHEMA: public
     server:
       DOMAIN: gitea.local.lan
       PROTOCOL: https

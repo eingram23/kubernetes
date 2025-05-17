@@ -21,6 +21,7 @@ service:
     port: 443
     annotations:
       metallb.universe.tf/allow-shared-ip: gitea
+      external-dns.alpha.kubernetes.io/hostname: gitea-dev.local.lan
     type: LoadBalancer
   ssh:
     annotations:
