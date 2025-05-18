@@ -20,7 +20,7 @@ spec:
     targetRevision: main
     path: argocd/environments/prod/clus1/manifests/gitea
   destination:
-    server: https://rancher.local.lan/k8s/clusters/c-m-q9x87lmv
+    server: https://rancher.local.lan/k8s/clusters/c-m-99tbw7lr
     namespace: gitea
   syncPolicy:
     automated:
