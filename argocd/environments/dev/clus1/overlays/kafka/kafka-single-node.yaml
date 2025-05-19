@@ -63,6 +63,9 @@ spec:
       tls: true
       configuration:
         bootstrap:
+          host: bootstrap.local.lan
+          annotations:
+            cert-manager.io/cluster-issuer: "vault-issuer"
           alternativeNames:
           - bootstrap.local.lan
     config:
