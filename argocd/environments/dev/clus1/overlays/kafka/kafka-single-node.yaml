@@ -57,9 +57,9 @@ spec:
           secretName: kafka-tls
           key: tls.key
           certificate: tls.crt
-        hostTemplate: broker-{nodeId}.myingress.com
+        hostTemplate: broker-{nodeId}.local.lan
         bootstrap:
-          host: bootstrap.myingress.com
+          host: bootstrap.local.lan
           annotations:
             cert-manager.io/cluster-issuer: "vault-issuer"
     config:
