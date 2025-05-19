@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: kafka
+
+resources:
+- https://github.com/eingram23/kubernetes.git/argocd/apps/kafka?ref=main
+- kafka-single-node.yaml
