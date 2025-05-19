@@ -55,6 +55,8 @@ spec:
         class: nginx
         brokerCertChainAndKey:
           secretName: kafka-tls
+          key: tls.key
+          certificate: tls.crt
         hostTemplate: broker-{nodeId}.myingress.com
         bootstrap:
           host: bootstrap.myingress.com
