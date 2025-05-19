@@ -52,6 +52,9 @@ spec:
       authentication:
         type: tls
       configuration:
+        class: nginx
+        brokerCertChainAndKey:
+          secretName: kafka-tls
         hostTemplate: broker-{nodeId}.myingress.com
         bootstrap:
           host: bootstrap.myingress.com
