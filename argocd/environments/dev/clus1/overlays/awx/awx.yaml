@@ -54,22 +54,22 @@ spec:
       cpu: 250m
       memory: 250M
     limits:
-      cpu: 250m
-      # memory: 1000Mi
+      cpu: 500m
+      memory: 500Mi
   task_resource_requirements:
     requests:
       cpu: 250m
       memory: 250M
     limits:
-      cpu: 250m
-      # memory: 1000Mi
+      cpu: 500m
+      memory: 1000Mi
   ee_resource_requirements:
     requests:
       cpu: 250m
       memory: 100Mi
     limits:
-      cpu: 250m
-      # memory: 250Mi
+      cpu: 500m
+      memory: 250Mi
   redis_capabilities:
     - CHOWN
     - SETUID
