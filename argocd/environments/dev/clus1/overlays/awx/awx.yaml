@@ -44,7 +44,7 @@ spec:
   ingress_type: ingress
   ingress_class_name: nginx
   ingress_hosts:
-    - hostname: awx.local.lan
+    - hostname: awx-dev.local.lan
       tls_secret: awx-tls
   ingress_annotations: |
     cert-manager.io/cluster-issuer: "vault-issuer"
