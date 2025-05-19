@@ -40,23 +40,23 @@ spec:
     - name: plain
       port: 9092
       type: ingress
-        tls: true
-        authentication:
-          type: tls
-        configuration:
-          hostTemplate: broker-{nodeId}.local.lan
-          bootstrap:
-            host: bootstrap.local.lan
+      tls: true
+      authentication:
+        type: tls
+      configuration:
+        hostTemplate: broker-{nodeId}.local.lan
+        bootstrap:
+          host: bootstrap.local.lan
     - name: tls
       port: 9093
       type: ingress
-        tls: true
-        authentication:
-          type: tls
-        configuration:
-          hostTemplate: broker-{nodeId}.local.lan
-          bootstrap:
-            host: bootstrap.local.lan
+      tls: true
+      authentication:
+        type: tls
+      configuration:
+        hostTemplate: broker-{nodeId}.local.lan
+        bootstrap:
+          host: bootstrap.local.lan
     - name: external1
       port: 9094
       type: ingress
@@ -64,7 +64,7 @@ spec:
       configuration:
         bootstrap:
           alternativeNames:
-            - bootstrap.local.lan
+          - bootstrap.local.lan
     config:
       offsets.topic.replication.factor: 1
       transaction.state.log.replication.factor: 1
