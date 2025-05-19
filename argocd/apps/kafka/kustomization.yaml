@@ -5,4 +5,4 @@ namespace: kafka
 
 resources:
 - strimzi-cluster-operator-0.46.0.yaml
-- kafka-single-node.yaml
+
