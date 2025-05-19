@@ -54,10 +54,10 @@ spec:
   entityOperator:
     topicOperator:
       resources:
-      requests:
-        memory: 250Mi
-        cpu: 250m
-      limits:
-        memory: 250Mi
-        cpu: 250m
+        requests:
+          memory: 250Mi
+          cpu: 250m
+        limits:
+          memory: 250Mi
+          cpu: 250m
     userOperator: {}
