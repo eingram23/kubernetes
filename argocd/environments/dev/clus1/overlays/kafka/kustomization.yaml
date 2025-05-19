@@ -6,3 +6,4 @@ namespace: kafka
 resources:
 - https://github.com/eingram23/kubernetes.git/argocd/apps/kafka?ref=main
 - kafka-single-node.yaml
+- kafka-cert-vault.yaml

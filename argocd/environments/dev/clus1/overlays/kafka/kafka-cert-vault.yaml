@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: kafka-tls
+  namespace: kafka
+spec:
+  secretName: kafka-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: vault-issuer
+  dnsNames:
+  - bootstrap-dev.local.lan
+  - broker-dev-0.local.lan
+  duration: 8760h
+  renewBefore: 4380h
