@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kafka-clus1-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    path: argocd/environments/dev/clus1/overlays/kafka
+  destination:
+    namespace: kafka
+    server: https://rancher.local.lan/k8s/clusters/c-m-w4fjmt4t
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
