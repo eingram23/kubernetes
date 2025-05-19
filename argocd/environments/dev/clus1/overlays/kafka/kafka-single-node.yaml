@@ -57,9 +57,13 @@ spec:
           secretName: kafka-tls
           key: tls.key
           certificate: tls.crt
-        hostTemplate: broker-{nodeId}.local.lan
         bootstrap:
-          host: bootstrap.local.lan
+          host: bootstrap-dev.local.lan
+          annotations:
+            cert-manager.io/cluster-issuer: "vault-issuer"
+        brokers:
+        - broker: 0
+          host: broker-dev-0.local.lan
           annotations:
             cert-manager.io/cluster-issuer: "vault-issuer"
     config:
