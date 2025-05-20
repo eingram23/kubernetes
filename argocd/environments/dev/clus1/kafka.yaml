@@ -5,10 +5,13 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://github.com/eingram23/kubernetes.git
+  sources:
+  - repoURL: https://github.com/eingram23/kubernetes.git
     targetRevision: main
     path: argocd/environments/dev/clus1/overlays/kafka
+  - repoURL: https://github.com/eingram23/kubernetes.git
+    targetRevision: main
+    path: argocd/environments/dev/clus1/manifests/kafka
   destination:
     namespace: kafka
     server: https://rancher.local.lan/k8s/clusters/c-m-w4fjmt4t
