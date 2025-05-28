@@ -52,7 +52,7 @@ spec:
       # authentication:
       #   type: tls
       configuration:
-        class: nginx
+        # class: nginx
         brokerCertChainAndKey:
           secretName: kafka-tls
           key: tls.key
