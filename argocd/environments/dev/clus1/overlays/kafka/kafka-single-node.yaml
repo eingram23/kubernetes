@@ -47,25 +47,21 @@ spec:
       tls: true
     - name: external1
       port: 9094
-      type: loadbalancer
+      type: ingress
       tls: true
       authentication:
         type: tls
       configuration:
-        # class: nginx
+        class: nginx
         brokerCertChainAndKey:
-          secretName: kafka-tls
+          secretName: kafka-cluster-tls
           key: tls.key
           certificate: tls.crt
-          # bootstrap:
-          #   host: bootstrap-dev.local.lan
-          # annotations:
-          #   cert-manager.io/cluster-issuer: "vault-issuer"
-          # brokers:
-          # - broker: 0
-          #   host: broker-dev-0.local.lan
-          # annotations:
-          #   cert-manager.io/cluster-issuer: "vault-issuer"
+          bootstrap:
+            host: bootstrap-dev.local.lan
+          brokers:
+          - broker: 0
+            host: broker-dev-0.local.lan
     config:
       offsets.topic.replication.factor: 1
       transaction.state.log.replication.factor: 1
