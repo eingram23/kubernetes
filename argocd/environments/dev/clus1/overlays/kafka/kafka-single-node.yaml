@@ -54,7 +54,7 @@ spec:
       configuration:
         class: nginx
         brokerCertChainAndKey:
-          secretName: kafka-cluster-tls
+          secretName: kafka-tls
           key: tls.key
           certificate: tls.crt
         bootstrap:
