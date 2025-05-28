@@ -8,6 +8,9 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: vault-issuer
+  subject:
+    organizations:
+      - homelab
   dnsNames:
   - bootstrap-dev.local.lan
   - broker-dev-0.local.lan
