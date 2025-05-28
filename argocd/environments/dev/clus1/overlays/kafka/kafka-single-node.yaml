@@ -47,7 +47,7 @@ spec:
       tls: true
     - name: external1
       port: 9094
-      type: ingress
+      type: loadbalancer
       tls: true
       authentication:
         type: tls
