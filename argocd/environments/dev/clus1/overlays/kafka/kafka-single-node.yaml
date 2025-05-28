@@ -59,13 +59,13 @@ spec:
           certificate: tls.crt
         bootstrap:
           host: bootstrap-dev.local.lan
-          annotations:
-            cert-manager.io/cluster-issuer: "vault-issuer"
+          # annotations:
+          #   cert-manager.io/cluster-issuer: "vault-issuer"
         brokers:
         - broker: 0
           host: broker-dev-0.local.lan
-          annotations:
-            cert-manager.io/cluster-issuer: "vault-issuer"
+          # annotations:
+          #   cert-manager.io/cluster-issuer: "vault-issuer"
     config:
       offsets.topic.replication.factor: 1
       transaction.state.log.replication.factor: 1
