@@ -1,0 +1,8 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: ansible-results
+  labels:
+    strimzi.io/cluster: kafka-cluster
+spec:
+  topicName: ansible-results
