@@ -51,6 +51,10 @@ spec:
       tls: true
       authentication:
         type: tls
+        certificateAndKey:
+          secretName: kafka-tls
+          certificate: tls.crt
+          key: tls.key
       configuration:
         class: nginx
         brokerCertChainAndKey:
