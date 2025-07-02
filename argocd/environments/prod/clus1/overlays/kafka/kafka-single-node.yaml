@@ -50,7 +50,7 @@ spec:
       type: ingress
       tls: true
       authentication:
-        type: tls-external
+        type: tls
       configuration:
         class: nginx
         brokerCertChainAndKey:
