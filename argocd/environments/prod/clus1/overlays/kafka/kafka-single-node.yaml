@@ -49,8 +49,8 @@ spec:
       port: 9094
       type: ingress
       tls: true
-      # authentication:
-      #   type: tls
+      authentication:
+        type: tls
       configuration:
         class: nginx
         brokerCertChainAndKey:
