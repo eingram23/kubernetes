@@ -40,9 +40,9 @@ resources:
   requests:
     memory: 500Mi
     cpu: 100m
-  # limits:
-  #   memory: 1Gi
-  #   cpu: 1000m
+  limits:
+    memory: 1Gi
+    cpu: 1000m
 
 postgresql-ha:
   enabled: false
@@ -64,11 +64,11 @@ postgresql:
 
 gitea:
   additionalConfigFromEnvs:
-    - name: GITEA__DATABASE__PASSWD
-      valueFrom:
-        secretKeyRef:
-          name: gitea-postgres-secret
-          key: password
+  - name: GITEA__DATABASE__PASSWD
+    valueFrom:
+      secretKeyRef:
+        name: gitea-postgres-secret
+        key: password
   config:
     database:
       DB_TYPE: postgres

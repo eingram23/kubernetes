@@ -112,10 +112,10 @@ args: []
 ## @param sources [array] K8s resources type to be observed for new DNS entries by ExternalDNS
 ##
 sources:
-  # - crd
-  - service
-  - ingress
-  # - contour-httpproxy
+# - crd
+- service
+- ingress
+# - contour-httpproxy
 ## @param provider DNS provider where the DNS records will be created.
 ## Available providers are:
 ## - akamai, alibabacloud, aws, azure, azure-private-dns, cloudflare, coredns, designate, digitalocean, google, hetzner, infoblox, linode, rfc2136, transip, oci
@@ -1032,7 +1032,7 @@ networkPolicy:
   allowExternalEgress: true
   ## @param networkPolicy.kubeAPIServerPorts [array] List of possible endpoints to kube-apiserver (limit to your cluster settings to increase security)
   ##
-  kubeAPIServerPorts: [443, 6443, 8443]
+  kubeAPIServerPorts: [ 443, 6443, 8443 ]
   ## @param networkPolicy.extraIngress [array] Add extra ingress rules to the NetworkPolicy
   ## e.g:
   ## extraIngress:
@@ -1134,7 +1134,7 @@ containerSecurityContext:
   allowPrivilegeEscalation: false
   readOnlyRootFilesystem: true
   capabilities:
-    drop: ["ALL"]
+    drop: [ "ALL" ]
   seccompProfile:
     type: "RuntimeDefault"
 ## @param podSecurityContext.enabled Enable pod security context
@@ -1161,13 +1161,13 @@ podSecurityContext:
 resourcesPreset: "nano"
 ## @param resources Set container requests and limits for different resources like CPU or memory (essential for production workloads)
 ## Example:
-## resources:
-##   requests:
-##     cpu: 2
-##     memory: 512Mi
-##   limits:
-##     cpu: 3
-##     memory: 1024Mi
+# resources:
+#   requests:
+#     cpu: 2
+#     memory: 512Mi
+#   limits:
+#     cpu: 3
+#     memory: 1024Mi
 ##
 resources: {}
 ## Configure extra options for liveness probe
