@@ -130,7 +130,7 @@ data:
     %end
 
     # Keyboard layouts
-    keyboard --vckeymap=us -xlayouts='us'
+    keyboard --vckeymap=us --xlayouts='us'
     # System language
     lang en_US.UTF-8
 
