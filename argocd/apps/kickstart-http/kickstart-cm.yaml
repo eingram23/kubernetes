@@ -8,8 +8,8 @@ metadata:
 data:
   ks-rocky9-rke.cfg: |
     # version=RHEL9
-    # Use graphical install
-    graphical
+    # Use text install
+    text
 
     repo --name="AppStream" --baseurl=file:///run/install/sources/mount-0000-cdrom/AppStream
 
@@ -61,8 +61,8 @@ data:
     reboot
   ks-rocky9.cfg: |
     #version=RHEL9
-    # Use graphical install
-    graphical
+    # Use text install
+    text
 
     repo --name="AppStream" --baseurl=file:///run/install/sources/mount-0000-cdrom/AppStream
 
@@ -115,8 +115,8 @@ data:
 
   ks-rocky10.cfg: |
     #version=RHEL10
-    # Use graphical install
-    graphical
+    # Use text install
+    text
 
     repo --name="AppStream" --baseurl=file:///run/install/sources/mount-0000-cdrom/AppStream
 
@@ -130,16 +130,16 @@ data:
     %end
 
     # Keyboard layouts
-    keyboard --xlayouts='us'
+    keyboard --vckeymap=us -xlayouts='us'
     # System language
     lang en_US.UTF-8
 
     # Network information
     network  --bootproto=dhcp --device=ens192 --ipv6=auto --activate
-    network  --hostname=rocky-temp.local
+    network  --hostname=rocky-tmp
 
     # Use CDROM installation media
-    cdrom
+    # cdrom
 
     # Run the Setup Agent on first boot
     firstboot --enable
@@ -159,7 +159,8 @@ data:
     logvol swap --fstype="swap" --size=2412 --name=swap --vgname=rl
 
     # System timezone
-    timezone America/Los_Angeles --isUtc --ntpservers=2.pool.ntp.org,2.pool.ntp.org,2.pool.ntp.org,2.pool.ntp.org
+    timezone America/Los_Angeles --utc 
+    timesource --ntp-server=2.pool.ntp.org,2.pool.ntp.org,2.pool.ntp.org,2.pool.ntp.org
 
     # Root password
     rootpw --allow-ssh temppassword
