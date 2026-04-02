@@ -64,8 +64,6 @@ data:
     # Use text install
     text
 
-    repo --name="AppStream" --baseurl=file:///run/install/sources/mount-0000-cdrom/AppStream
-
     %addon com_redhat_kdump --enable --reserve-mb='auto'
 
     %end
@@ -86,6 +84,8 @@ data:
 
     # Use CDROM installation media
     cdrom
+    repo --name="BaseOS" --baseurl=file:///run/install/repo/BaseOS
+    repo --name="AppStream" --baseurl=file:///run/install/repo/AppStream
 
     # Run the Setup Agent on first boot
     firstboot --enable
