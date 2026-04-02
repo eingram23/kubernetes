@@ -127,13 +127,13 @@ data:
     # System language
     lang en_US.UTF-8
 
-     Network information
+    # Network information
     network  --bootproto=dhcp --device=ens192 --ipv6=auto --activate
     network  --hostname=rocky-temp.local
 
     # Use CDROM installation media
     cdrom
-    repo --name="AppStream" --baseurl=file:///run/install/repo/AppStream
+    # repo --name="AppStream" --baseurl=file:///run/install/repo/AppStream
 
     %packages
     @^minimal-environment
