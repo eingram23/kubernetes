@@ -118,14 +118,7 @@ data:
     # Use text install
     text
 
-    repo --name="AppStream" --baseurl=file:///run/install/sources/mount-0000-cdrom/AppStream
-
     %addon com_redhat_kdump --enable --reserve-mb='auto'
-
-    %end
-
-    %packages
-    @^minimal-environment
 
     %end
 
@@ -134,16 +127,23 @@ data:
     # System language
     lang en_US.UTF-8
 
-    # Network information
+     Network information
     network  --bootproto=dhcp --device=ens192 --ipv6=auto --activate
     network  --hostname=rocky-temp.local
 
     # Use CDROM installation media
-    # cdrom
+    cdrom
+    repo --name="AppStream" --baseurl=file:///run/install/repo/AppStream
+
+    %packages
+    @^minimal-environment
+
+    %end
 
     # Run the Setup Agent on first boot
     firstboot --enable
 
+    # Generated using Blivet version 3.10.0
     ignoredisk --only-use=sda
     # Partition clearing information
     clearpart --none --initlabel
