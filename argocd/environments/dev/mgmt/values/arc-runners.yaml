@@ -204,8 +204,9 @@ template:
     containers:
       - name: runner
         image: ghcr.io/eingram-homelab/homelab-runner:1.0.0
+        imagePullPolicy: Always
         command: ["/home/runner/run.sh"]
-    ImagePullSecrets:
+    imagePullSecrets:
       - name: arc-runners-ghcr-secret
 
 ## Optional controller service account that needs to have required Role and RoleBinding
