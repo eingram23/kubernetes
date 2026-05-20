@@ -203,10 +203,10 @@ template:
   spec:
     containers:
       - name: runner
-        image: ghcr.io/actions/actions-runner:latest
+        image: ghcr.io/eingram-homelab/homelab-runner:1.0.0
         command: ["/home/runner/run.sh"]
-    # ImagePullSecrets:
-    #   - name: arc-runners-ghcr-secret
+    ImagePullSecrets:
+      - name: arc-runners-ghcr-secret
 
 ## Optional controller service account that needs to have required Role and RoleBinding
 ## to operate this gha-runner-scale-set installation.
