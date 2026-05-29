@@ -47,7 +47,7 @@ data:
     part pv.213 --fstype="lvmpv" --ondisk=sda --size=59768
     part /boot/efi --fstype="efi" --ondisk=sda --size=600 --fsoptions="umask=0077,shortname=winnt"
     volgroup rl --pesize=4096 pv.213
-    logvol /home --fstype="xfs" --size=10240 --name=home --vgname=rl
+    logvol /home --fstype="xfs" --size=20480 --name=home --vgname=rl
     logvol / --fstype="xfs" --size=47104 --name=root --vgname=rl
     logvol swap --fstype="swap" --size=2412 --name=swap --vgname=rl
 
@@ -100,7 +100,7 @@ data:
     part pv.213 --fstype="lvmpv" --ondisk=sda --size=59768
     part /boot/efi --fstype="efi" --ondisk=sda --size=600 --fsoptions="umask=0077,shortname=winnt"
     volgroup rl --pesize=4096 pv.213
-    logvol /home --fstype="xfs" --size=10240 --name=home --vgname=rl
+    logvol /home --fstype="xfs" --size=20480 --name=home --vgname=rl
     logvol / --fstype="xfs" --size=47104 --name=root --vgname=rl
     logvol swap --fstype="swap" --size=2412 --name=swap --vgname=rl
 
@@ -154,7 +154,7 @@ data:
     volgroup rl --pesize=4096 pv.966
     logvol swap --fstype="swap" --size=2088 --name=swap --vgname=rl
     logvol / --fstype="xfs" --grow --maxsize=71680 --size=1024 --name=root --vgname=rl
-    logvol /home --fstype="xfs" --grow --size=500 --name=home --vgname=rl
+    logvol /home --fstype="xfs" --size=20480 --name=home --vgname=rl
 
     # System timezone
     timezone America/Los_Angeles --utc 
