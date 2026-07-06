@@ -203,7 +203,7 @@ template:
   spec:
     containers:
       - name: runner
-        image: ghcr.io/eingram-homelab/homelab-runner:1.0.0
+        image: ghcr.io/eingram-homelab/homelab-runner:latest
         imagePullPolicy: Always
         command: ["/home/runner/run.sh"]
     imagePullSecrets:
