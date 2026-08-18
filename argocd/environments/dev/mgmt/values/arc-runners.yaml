@@ -119,7 +119,7 @@ containerMode:
 #       image: example-sidecar
 ## template is the PodSpec for each runner Pod
 ## For reference: https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec
-template:
+
   ## template.spec will be modified if you change the container mode
   ## with containerMode.type=dind, we will populate the template.spec with following pod spec
   ## template:
@@ -198,6 +198,7 @@ template:
   ##               resources:
   ##                 requests:
   ##                   storage: 1Gi
+  #template:
   # spec:
   #   containers:
   #     - name: runner
