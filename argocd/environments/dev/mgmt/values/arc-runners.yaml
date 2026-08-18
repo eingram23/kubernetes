@@ -100,7 +100,6 @@ containerMode:
     resources:
       requests:
         storage: 1Gi
-#
 
 ## listenerTemplate is the PodSpec for each listener Pod
 ## For reference: https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec
@@ -118,9 +117,9 @@ containerMode:
 #     # Spec for this container will be applied as is without any modifications.
 #     - name: side-car
 #       image: example-sidecar
-
 ## template is the PodSpec for each runner Pod
 ## For reference: https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec
+template:
   ## template.spec will be modified if you change the container mode
   ## with containerMode.type=dind, we will populate the template.spec with following pod spec
   ## template:
@@ -171,7 +170,34 @@ containerMode:
   ##       emptyDir: {}
   ######################################################################################################
   ## with containerMode.type=kubernetes, we will populate the template.spec with following pod spec
-template:
+  ## template:
+  ##   spec:
+  ##     containers:
+  ##     - name: runner
+  ##       image: ghcr.io/actions/actions-runner:latest
+  ##       command: ["/home/runner/run.sh"]
+  ##       env:
+  ##         - name: ACTIONS_RUNNER_CONTAINER_HOOKS
+  ##           value: /home/runner/k8s/index.js
+  ##         - name: ACTIONS_RUNNER_POD_NAME
+  ##           valueFrom:
+  ##             fieldRef:
+  ##               fieldPath: metadata.name
+  ##         - name: ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER
+  ##           value: "true"
+  ##       volumeMounts:
+  ##         - name: work
+  ##           mountPath: /home/runner/_work
+  ##     volumes:
+  ##       - name: work
+  ##         ephemeral:
+  ##           volumeClaimTemplate:
+  ##             spec:
+  ##               accessModes: [ "ReadWriteOnce" ]
+  ##               storageClassName: "local-path"
+  ##               resources:
+  ##                 requests:
+  ##                   storage: 1Gi
   spec:
     containers:
       - name: runner
@@ -179,29 +205,7 @@ template:
         imagePullPolicy: Always
         command: ["/home/runner/run.sh"]
     imagePullSecrets:
-    - name: arc-runners-ghcr-secret
-      env:
-        - name: ACTIONS_RUNNER_CONTAINER_HOOKS
-          value: /home/runner/k8s/index.js
-        - name: ACTIONS_RUNNER_POD_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.name
-        - name: ACTIONS_RUNNER_REQUIRE_JOB_CONTAINER
-          value: "true"
-      volumeMounts:
-        - name: work
-          mountPath: /home/runner/_work
-    volumes:
-      - name: work
-        ephemeral:
-          volumeClaimTemplate:
-            spec:
-              accessModes: [ "ReadWriteOnce" ]
-              storageClassName: "vsphere-csi"
-              resources:
-                requests:
-                  storage: 1Gi
+      - name: arc-runners-ghcr-secret
 
 ## Optional controller service account that needs to have required Role and RoleBinding
 ## to operate this gha-runner-scale-set installation.
