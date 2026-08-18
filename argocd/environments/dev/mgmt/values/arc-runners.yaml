@@ -198,7 +198,7 @@ template:
           volumeClaimTemplate:
             spec:
               accessModes: [ "ReadWriteOnce" ]
-              storageClassName: "local-path"
+              storageClassName: "vsphere-csi"
               resources:
                 requests:
                   storage: 1Gi
