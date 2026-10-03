@@ -281,5 +281,9 @@ data:
         package_upgrade: true
         package_reboot_if_required: true
       timezone: UTC
+      late-commands:
+        - curtin in-target --target=/target -- sh -c 'printf "%s\n" "tempuser ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/90-tempuser'
+        - curtin in-target --target=/target -- chmod 0440 /etc/sudoers.d/90-tempuser
+        - curtin in-target --target=/target -- visudo -cf /etc/sudoers.d/90-tempuser
   metadata: |
     # empty placeholder
