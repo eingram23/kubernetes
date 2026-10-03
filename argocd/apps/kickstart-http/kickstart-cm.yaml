@@ -187,36 +187,54 @@ data:
         config:
           - id: disk0
             type: disk
-            match:
-              size: largest
             ptable: gpt
-            wipe: superblock
+            wipe: superblock-recursive
             grub_device: true
-          - id: efi-partition
+
+          - id: disk0-boot-efi
             type: partition
+            size: 512M
             device: disk0
-            size: 1G
             flag: boot
-          - id: efi-format
+            grub_device: true
+          - id: disk0-boot-efi-fs
             type: format
-            volume: efi-partition
             fstype: fat32
-          - id: efi-mount
-            type: mount
-            device: efi-format
-            path: /boot/efi
-          - id: root-partition
+            volume: disk0-boot-efi
+            label: EFI
+
+          - id: disk0-boot
             type: partition
+            size: 1G
             device: disk0
-            size: -1
-          - id: root-format
+          - id: disk0-boot-fs
             type: format
-            volume: root-partition
             fstype: ext4
-          - id: root-mount
-            type: mount
-            device: root-format
+            volume: disk0-boot
+            label: boot
+
+          - id: disk0-root
+            type: partition
+            size: -1
+            device: disk0
+          - id: disk0-root-fs
+            type: format
+            fstype: ext4
+            volume: disk0-root
+            label: root
+
+          - type: mount
+            id: disk0-boot-efi-mnt
+            path: /boot/efi
+            device: disk0-boot-efi-fs
+          - type: mount
+            id: disk0-boot-mnt
+            path: /boot
+            device: disk0-boot-fs
+          - type: mount
+            id: disk0-root-mnt
             path: /
+            device: disk0-root-fs
       identity:
         hostname: ubuntu-server
         username: tempuser
