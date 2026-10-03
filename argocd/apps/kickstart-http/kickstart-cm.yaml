@@ -185,86 +185,77 @@ data:
         layout: us
       storage:
         config:
-          - ptable: gpt
+          - type: disk
+            id: disk-sda
             path: /dev/sda
+            ptable: gpt
             wipe: superblock-recursive
             preserve: false
-            name: ''
             grub_device: false
-            id: disk-sda
-            type: disk
-          - device: disk-sda
-            size: 1127219200
-            wipe: superblock
-            flag: boot
+          - type: partition
+            id: partition-0
+            device: disk-sda
             number: 1
+            size: 1127219200
+            flag: boot
+            wipe: superblock
             preserve: false
             grub_device: true
-            offset: 1048576
-            path: /dev/sda1
-            id: partition-0
-            type: partition
-          - device: disk-sda
+          - type: partition
+            id: partition-1
+            device: disk-sda
+            number: 2
             size: 2147483648
             wipe: superblock
-            number: 2
             preserve: false
             grub_device: false
-            offset: 1128267776
-            path: /dev/sda2
-            id: partition-1
-            type: partition
-          - device: disk-sda
-            size: 61147709440
-            wipe: superblock
-            number: 3
-            preserve: false
-            grub_device: false
-            offset: 3275751424
-            path: /dev/sda3
+          - type: partition
             id: partition-2
-            type: partition
-          - fstype: fat32
-            volume: partition-0
-            preserve: false
-            id: format-0
-            type: format
-          - fstype: ext4
-            volume: partition-1
-            preserve: false
-            id: format-1
-            type: format
-          - name: ubuntu-vg
-            devices:
-            - partition-2
-            preserve: false
-            id: lvm_volgroup-0
-            type: lvm_volgroup
-          - name: ubuntu-lv
-            volgroup: lvm_volgroup-0
-            size: 30572281856B
+            device: disk-sda
+            number: 3
+            size: -1
             wipe: superblock
             preserve: false
-            path: /dev/ubuntu-vg/ubuntu-lv
-            id: lvm_partition-0
-            type: lvm_partition
-          - fstype: ext4
-            volume: lvm_partition-0
+            grub_device: false
+          - type: format
+            id: format-0
+            volume: partition-0
+            fstype: fat32
             preserve: false
+          - type: format
+            id: format-1
+            volume: partition-1
+            fstype: ext4
+            preserve: false
+          - type: lvm_volgroup
+            id: lvm_volgroup-0
+            name: ubuntu-vg
+            devices: [partition-2]
+            preserve: false
+          - type: lvm_partition
+            id: lvm_partition-0
+            name: ubuntu-lv
+            volgroup: lvm_volgroup-0
+            size: -1
+            wipe: superblock
+            preserve: false
+          - type: format
             id: format-2
-            type: format
-          - path: /
-            device: format-2
+            volume: lvm_partition-0
+            fstype: ext4
+            preserve: false
+          - type: mount
             id: mount-2
-            type: mount
-          - path: /boot
-            device: format-1
+            device: format-2
+            path: /
+          - type: mount
             id: mount-1
-            type: mount
-          - path: /boot/efi
-            device: format-0
+            device: format-1
+            path: /boot
+          - type: mount
             id: mount-0
-            type: mount
+            device: format-0
+            path: /boot/efi
       identity:
         hostname: ubuntu-server
         username: tempuser
