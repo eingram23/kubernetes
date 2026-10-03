@@ -28,3 +28,10 @@ spec:
       - name: kickstart-config
         configMap:
           name: kickstart-config
+          items:
+            - key: ks-rocky10.cfg
+              path: ks-rocky10.cfg
+            - key: ubuntu26-cc
+              path: ubuntu26/cloud-config.cfg
+            - key: metadata
+              path: ubuntu26/metadata.cfg

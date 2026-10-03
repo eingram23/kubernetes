@@ -165,3 +165,51 @@ data:
 
     # Reboot after installation
     reboot
+  ubuntu26-cc: |
+    #cloud-config
+    autoinstall:
+      version: 1
+      apt:
+        geoip: true
+        preserve_sources_list: true
+        primary:
+          - arches: [amd64, i386]
+            uri: http://us.archive.ubuntu.com/ubuntu
+          - arches: [default]
+            uri: http://ports.ubuntu.com/ubuntu-ports    
+      early-commands:
+        # Ensures that Packer does not connect too soon.
+        - sudo systemctl stop ssh
+      locale: en_US
+      keyboard:
+        layout: us
+      storage:
+        layout:
+          name: direct
+      identity:
+        hostname: ubuntu-server
+        username: tempuser
+        password: $6$PtgsSOYcedPXOAbi$nbuIwp5OLrZ1opLUOKgfP8D0thOYCaCRHN6v6L38xWBRshvKWb7wor06rn6qwpu7yrK8VuQysUi8JMfT4DQLL.
+      network:
+        network:
+          version: 2
+          ethernets:
+            ens192:
+              dhcp4: true
+              dhcp-identifier: mac
+      ssh:
+        install-server: true
+        allow-pw: true
+      packages:
+        - openssh-server
+        - open-vm-tools
+        - net-tools
+        - cloud-init
+      user-data:
+        disable_root: false
+        package_update: true
+        package_upgrade: true
+        package_reboot_if_required: true
+      timezone: UTC
+  metadata: |
+    # empty placeholder
