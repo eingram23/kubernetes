@@ -184,8 +184,39 @@ data:
       keyboard:
         layout: us
       storage:
-        layout:
-          name: direct
+        config:
+          - id: disk0
+            type: disk
+            match:
+              size: largest
+            ptable: gpt
+            wipe: superblock
+            grub_device: true
+          - id: efi-partition
+            type: partition
+            device: disk0
+            size: 1G
+            flag: boot
+          - id: efi-format
+            type: format
+            volume: efi-partition
+            fstype: fat32
+          - id: efi-mount
+            type: mount
+            device: efi-format
+            path: /boot/efi
+          - id: root-partition
+            type: partition
+            device: disk0
+            size: -1
+          - id: root-format
+            type: format
+            volume: root-partition
+            fstype: ext4
+          - id: root-mount
+            type: mount
+            device: root-format
+            path: /
       identity:
         hostname: ubuntu-server
         username: tempuser
