@@ -32,6 +32,6 @@ spec:
             - key: ks-rocky10.cfg
               path: ks-rocky10.cfg
             - key: ubuntu26-cc
-              path: ubuntu26/cloud-config.cfg
+              path: ubuntu26/user-data
             - key: metadata
-              path: ubuntu26/metadata.cfg
+              path: ubuntu26/meta-data
