@@ -285,5 +285,6 @@ data:
         - curtin in-target --target=/target -- sh -c 'printf "%s\n" "tempuser ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/90-tempuser'
         - curtin in-target --target=/target -- chmod 0440 /etc/sudoers.d/90-tempuser
         - curtin in-target --target=/target -- visudo -cf /etc/sudoers.d/90-tempuser
+        - vmware-toolbox-cmd config set deployPkg enable-custom-scripts true
   metadata: |
     # empty placeholder
